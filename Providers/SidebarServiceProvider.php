@@ -48,7 +48,7 @@ class SidebarServiceProvider extends ServiceProvider {
     private function onBackend() {
         return true; //for my sake please
         $url = $this->request->url();
-        if (str_contains($url, config('dervis.core.admin-prefix'))) {
+        if (str_contains($url, mconfig('core.core.admin-prefix'))) {
             return true;
         }
         return false;

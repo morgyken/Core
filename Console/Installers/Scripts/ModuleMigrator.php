@@ -42,8 +42,10 @@ class ModuleMigrator implements SetupScript {
         //dd(\Modules\Core\Console\InstallCommand::$outa);
         //$bar = $this->output->createProgressBar(count($this->modules));
         foreach ($this->modules as $module) {
-            $command->info("***** [$module] ****");
-            $command->call('module:migrate', ['module' => $module]);
+            if (is_module_enabled($module)) {
+                $command->info("***** [$module] ****");
+                $command->call('module:migrate', ['module' => $module]);
+            }
             //  $bar->advance();
         }
         //$bar->finish();

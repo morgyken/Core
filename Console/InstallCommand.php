@@ -21,7 +21,7 @@ use Modules\Core\Console\Installers\Scripts\ModuleSeeders;
 use Modules\Core\Console\Installers\Scripts\ProtectInstaller;
 use Modules\Core\Console\Installers\Scripts\SetAppKey;
 use Illuminate\Console\Command;
-use Modules\Core\Console\Installers\Scripts\ConfigureDatabase;
+//use Modules\Core\Console\Installers\Scripts\ConfigureDatabase;
 use Modules\Core\Console\Installers\Scripts\ThemeAssets;
 use Modules\Core\Console\Installers\Traits\BlockMessage;
 use Modules\Core\Console\Installers\Traits\SectionMessage;
@@ -75,7 +75,7 @@ class InstallCommand extends Command {
 
         $success = $this->installer->stack([
                     ProtectInstaller::class,
-                    ConfigureDatabase::class,
+                    // ConfigureDatabase::class,
                     SetAppKey::class,
                     ModuleMigrator::class,
                     ModuleSeeders::class,

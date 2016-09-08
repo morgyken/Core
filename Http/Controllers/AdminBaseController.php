@@ -28,8 +28,6 @@ class AdminBaseController extends Controller {
     /**
      * @var AssetPipeline
      */
-    protected $assetPipeline;
-
     public function __construct() {
         $this->assetManager = app(AssetManager::class);
         $this->assetPipeline = app(AssetPipeline::class);
@@ -57,12 +55,12 @@ class AdminBaseController extends Controller {
      * Require the default assets from config file on the asset pipeline
      */
     private function requireDefaultAssets() {
-        $this->assetPipeline->requireCss(mconfig('core.admin-required-assets.css'));
-        $this->assetPipeline->requireJs(mconfig('core.admin-required-assets.js'));
+        $this->assetPipeline->requireCss(mconfig('core.core.admin-required-assets.css'));
+        $this->assetPipeline->requireJs(mconfig('core.core.admin-required-assets.js'));
     }
 
     public function index() {
-
+        dd($this->assetPipeline);
     }
 
 }

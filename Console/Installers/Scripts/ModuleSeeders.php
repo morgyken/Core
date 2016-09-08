@@ -41,7 +41,8 @@ class ModuleSeeders implements SetupScript {
     public function fire(Command $command) {
         $command->blockMessage('Seeds', 'Running the module seeds ...', 'comment');
         foreach ($this->modules as $module) {
-            $command->call('module:seed', ['module' => $module]);
+            if (is_module_enabled($module))
+                $command->call('module:seed', ['module' => $module]);
         }
         if ($command->option('seed')) {
             $command->warn('Seeding extra data');

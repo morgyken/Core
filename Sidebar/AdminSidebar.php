@@ -10,18 +10,19 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Library;
+namespace Modules\Core\Sidebar;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Menu;
 use Maatwebsite\Sidebar\ShouldCache;
 use Maatwebsite\Sidebar\Sidebar;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
+use Nwidart\Modules\Contracts\RepositoryInterface;
 
 /**
- * Description of Sidebar
+ * Description of AdminSidebar
  *
- * @author samueldervis
+ * @author samuel
  */
 class AdminSidebar implements Sidebar, ShouldCache {
 
@@ -33,6 +34,11 @@ class AdminSidebar implements Sidebar, ShouldCache {
     protected $menu;
 
     /**
+     * @var RepositoryInterface
+     */
+    protected $modules;
+
+    /**
      * @var Container
      */
     protected $container;
@@ -42,8 +48,9 @@ class AdminSidebar implements Sidebar, ShouldCache {
      * @param RepositoryInterface $modules
      * @param Container           $container
      */
-    public function __construct(Menu $menu, Container $container) {
+    public function __construct(Menu $menu, RepositoryInterface $modules, Container $container) {
         $this->menu = $menu;
+        $this->modules = $modules;
         $this->container = $container;
     }
 
@@ -51,12 +58,13 @@ class AdminSidebar implements Sidebar, ShouldCache {
      * Build your sidebar implementation here
      */
     public function build() {
-        $enabled = \Module::enabled();
-        foreach ($enabled as $module) {
+        foreach ($this->modules->enabled() as $module) {
             $name = studly_case($module->get('name'));
             $class = 'Modules\\' . $name . '\\Sidebar\\SidebarExtender';
+
             if (class_exists($class)) {
                 $extender = $this->container->make($class);
+
                 $this->menu->add(
                         $extender->extendWith($this->menu)
                 );
