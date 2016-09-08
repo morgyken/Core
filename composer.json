@@ -1,0 +1,26 @@
+{
+    "name": "collabmed/core",
+    "description": "The core module for Collabmed Platform. This is required for every install.",
+    "authors": [
+        {
+            "name": "Samuel Dervis",
+            "email": "samueldervis@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "composer/installers": "~1.0",
+        "laravelcollective/html": "5.3.*",
+        "laracasts/flash": "^2.0",
+        "floatingpoint/stylist": "^0.4.0",
+        "maatwebsite/laravel-sidebar": "^2.1",
+        "cartalyst/sentinel": "2.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Core\\": ""
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

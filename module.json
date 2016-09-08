@@ -1,0 +1,28 @@
+{
+    "name": "Core",
+    "alias": "core",
+    "description": "The core module for Collabmed Platform. This is required for every install.",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "version": "1.00.0",
+    "providers": [
+        "Modules\\Core\\Providers\\CoreServiceProvider",
+        "Modules\\Core\\Providers\\ThemeServiceProvider",
+        "Modules\\Core\\Providers\\EventServiceProvider",
+        "Modules\\Core\\Providers\\SidebarServiceProvider",
+        "Modules\\Core\\Providers\\AssetServiceProvider",
+        "Collective\\Html\\HtmlServiceProvider",
+        "Laracasts\\Flash\\FlashServiceProvider",
+        "FloatingPoint\\Stylist\\StylistServiceProvider",
+        "Maatwebsite\\Sidebar\\SidebarServiceProvider"
+    ],
+    "aliases": {
+        "Form": "Collective\\Html\\FormFacade",
+        "Flash": "Laracasts\\Flash\\Flash"
+    },
+    "files": [
+        "start.php",
+        "helpers.php"
+    ]
+}
