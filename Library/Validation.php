@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Library;
+namespace Ignite\Core\Library;
 
 /**
  * Description of Validation

@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Library;
+namespace Ignite\Core\Library;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
 

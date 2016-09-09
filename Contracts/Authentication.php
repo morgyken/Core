@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Contracts;
+namespace Ignite\Core\Contracts;
 
 /**
  * Description of Authentication
@@ -44,8 +44,8 @@ interface Authentication {
 
     /**
      * Assign a role to the given user.
-     * @param  \Modules\User\Repositories\UserRepository $user
-     * @param  \Modules\User\Repositories\RoleRepository $role
+     * @param  \Ignite\User\Repositories\UserRepository $user
+     * @param  \Ignite\User\Repositories\RoleRepository $role
      * @return mixed
      */
     public function assignRole($user, $role);

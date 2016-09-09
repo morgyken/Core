@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console\Installers;
+namespace Ignite\Core\Console\Installers;
 
 use Illuminate\Console\Command;
 

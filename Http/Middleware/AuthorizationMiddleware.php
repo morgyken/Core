@@ -10,12 +10,12 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Http\Middleware;
+namespace Ignite\Core\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Core\Contracts\Authentication;
+use Ignite\Core\Contracts\Authentication;
 
 class AuthorizationMiddleware {
 

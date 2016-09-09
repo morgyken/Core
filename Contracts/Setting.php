@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Contracts;
+namespace Ignite\Core\Contracts;
 
 /**
  * Description of Setting

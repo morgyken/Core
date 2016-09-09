@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console\Installers\Traits;
+namespace Ignite\Core\Console\Installers\Traits;
 
 trait SectionMessage {
 

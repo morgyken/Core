@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Foundation\Theme;
+namespace Ignite\Core\Foundation\Theme;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Str;
@@ -32,7 +32,6 @@ class ThemeManager implements \Countable {
      * @param $path
      */
     public function __construct(Application $app, $path) {
-        dd($app, $path);
         $this->app = $app;
         $this->path = $path;
     }
@@ -103,7 +102,6 @@ class ThemeManager implements \Countable {
      * @return array
      */
     private function getDirectories() {
-        dd($this->path);
         return $this->getFinder()->directories($this->path);
     }
 

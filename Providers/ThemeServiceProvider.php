@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Providers;
+namespace Ignite\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

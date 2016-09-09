@@ -10,21 +10,21 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console;
+namespace Ignite\Core\Console;
 
-use Modules\Core\Console\Installers\Installer;
-use Modules\Core\Console\Installers\Scripts\ConfigureUserProvider;
-use Modules\Core\Console\Installers\Scripts\HouseKeeping;
-use Modules\Core\Console\Installers\Scripts\ModuleAssets;
-use Modules\Core\Console\Installers\Scripts\ModuleMigrator;
-use Modules\Core\Console\Installers\Scripts\ModuleSeeders;
-use Modules\Core\Console\Installers\Scripts\ProtectInstaller;
-use Modules\Core\Console\Installers\Scripts\SetAppKey;
+use Ignite\Core\Console\Installers\Installer;
+use Ignite\Core\Console\Installers\Scripts\ConfigureUserProvider;
+use Ignite\Core\Console\Installers\Scripts\HouseKeeping;
+use Ignite\Core\Console\Installers\Scripts\ModuleAssets;
+use Ignite\Core\Console\Installers\Scripts\ModuleMigrator;
+use Ignite\Core\Console\Installers\Scripts\ModuleSeeders;
+use Ignite\Core\Console\Installers\Scripts\ProtectInstaller;
+use Ignite\Core\Console\Installers\Scripts\SetAppKey;
 use Illuminate\Console\Command;
-//use Modules\Core\Console\Installers\Scripts\ConfigureDatabase;
-use Modules\Core\Console\Installers\Scripts\ThemeAssets;
-use Modules\Core\Console\Installers\Traits\BlockMessage;
-use Modules\Core\Console\Installers\Traits\SectionMessage;
+//use Ignite\Core\Console\Installers\Scripts\ConfigureDatabase;
+use Ignite\Core\Console\Installers\Scripts\ThemeAssets;
+use Ignite\Core\Console\Installers\Traits\BlockMessage;
+use Ignite\Core\Console\Installers\Traits\SectionMessage;
 use Symfony\Component\Console\Input\InputOption;
 
 class InstallCommand extends Command {

@@ -10,11 +10,11 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Repositories;
+namespace Ignite\Core\Repositories;
 
 /**
  * Interface CoreRepository
- * @package Modules\Core\Repositories
+ * @package Ignite\Core\Repositories
  */
 interface BaseRepository {
 

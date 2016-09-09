@@ -10,10 +10,10 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Composers;
+namespace Ignite\Core\Composers;
 
 use Maatwebsite\Sidebar\Presentation\SidebarRenderer;
-use Modules\Core\Library\AdminSidebar;
+use Ignite\Core\Library\AdminSidebar;
 
 /**
  * Description of SidebarViewCreator

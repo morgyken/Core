@@ -10,10 +10,10 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Foundation\Asset\Manager;
+namespace Ignite\Core\Foundation\Asset\Manager;
 
 use Illuminate\Support\Collection;
-use Modules\Core\Foundation\Asset\AssetNotFoundException;
+use Ignite\Core\Foundation\Asset\AssetNotFoundException;
 
 final class DervisAssetManager implements AssetManager {
 

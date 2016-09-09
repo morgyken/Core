@@ -10,10 +10,10 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console\Installers\Scripts;
+namespace Ignite\Core\Console\Installers\Scripts;
 
 use Illuminate\Console\Command;
-use Modules\Core\Console\Installers\SetupScript;
+use Ignite\Core\Console\Installers\SetupScript;
 
 class ModuleAssets implements SetupScript {
 

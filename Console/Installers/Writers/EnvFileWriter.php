@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console\Installers\Writers;
+namespace Ignite\Core\Console\Installers\Writers;
 
 use Dotenv\Dotenv;
 use Illuminate\Filesystem\Filesystem;

@@ -13,21 +13,26 @@
 namespace Ignite\Core\Composers;
 
 use Illuminate\Contracts\View\View;
-use Ignite\Core\Contracts\Authentication;
+use Ignite\Core\Foundation\Theme\ThemeManager;
 
-class CurrentUserViewComposer {
+/**
+ * Description of ThemeComposer
+ *
+ * @author samuel
+ */
+class ThemeComposer {
 
     /**
-     * @var Authentication
+     * @var ThemeManager
      */
-    private $auth;
+    private $themeManager;
 
-    public function __construct(Authentication $auth) {
-        $this->auth = $auth;
+    public function __construct(ThemeManager $themeManager) {
+        $this->themeManager = $themeManager;
     }
 
     public function compose(View $view) {
-        $view->with('user', $this->auth->check());
+        $view->with('themes', $this->themeManager->allPublicThemes());
     }
 
 }

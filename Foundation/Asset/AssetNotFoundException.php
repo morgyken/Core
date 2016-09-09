@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Foundation\Asset;
+namespace Ignite\Core\Foundation\Asset;
 
 class AssetNotFoundException extends \Exception {
 

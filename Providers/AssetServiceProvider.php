@@ -10,17 +10,17 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Providers;
+namespace Ignite\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Foundation\Asset\Manager\AssetManager;
-use Modules\Core\Foundation\Asset\Manager\DervisAssetManager;
-use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
-use Modules\Core\Foundation\Asset\Pipeline\DervisAssetPipeline;
+use Ignite\Core\Foundation\Asset\Manager\AssetManager;
+use Ignite\Core\Foundation\Asset\Manager\DervisAssetManager;
+use Ignite\Core\Foundation\Asset\Pipeline\AssetPipeline;
+use Ignite\Core\Foundation\Asset\Pipeline\DervisAssetPipeline;
 
 /**
  * Class AssetServiceProvider
- * @package Modules\Core\Providers
+ * @package Ignite\Core\Providers
  */
 class AssetServiceProvider extends ServiceProvider {
 

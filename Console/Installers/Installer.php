@@ -10,12 +10,12 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console\Installers;
+namespace Ignite\Core\Console\Installers;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
-use Modules\Core\Services\Composer;
+use Ignite\Core\Services\Composer;
 
 class Installer {
 

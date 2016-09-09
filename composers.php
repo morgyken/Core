@@ -10,10 +10,12 @@
  * =============================================================================
  */
 
-view()->creator('partials.sidebar-nav', \Modules\Core\Composers\SidebarViewCreator::class);
-view()->composer('partials.footer', \Modules\Core\Composers\ApplicationVersionViewComposer::class);
-view()->composer('layouts.master', \Modules\Core\Composers\MasterViewComposer::class);
-view()->composer('core::fields.select-theme', \Modules\Core\Composers\ThemeComposer::class);
-view()->composer('core::fields.select-locales', \Modules\Core\Composers\SettingLocalesComposer::class);
-view()->composer('*', \Modules\Core\Composers\LocaleComposer::class);
-view()->composer('layouts.master', \Modules\Core\Composers\CurrentUserViewComposer::class);
+use Modules\Core\Composers\CurrentUserViewComposer;
+use Modules\Core\Composers\MasterViewComposer;
+use Modules\Core\Composers\SidebarViewCreator;
+use Modules\Core\Composers\ThemeComposer;
+
+view()->creator('partials.sidebar-nav', SidebarViewCreator::class);
+view()->composer('layouts.master', MasterViewComposer::class);
+view()->composer('core::fields.select-theme', ThemeComposer::class);
+view()->composer('layouts.master', CurrentUserViewComposer::class);

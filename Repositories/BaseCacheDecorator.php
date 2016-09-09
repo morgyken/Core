@@ -10,10 +10,12 @@
  * =============================================================================
  */
 
+namespace Ignite\Core\Repositories;
+
 abstract class BaseCacheDecorator implements BaseRepository {
 
     /**
-     * @var \Modules\Core\Repositories\BaseRepository
+     * @var \Ignite\Core\Repositories\BaseRepository
      */
     protected $repository;
 

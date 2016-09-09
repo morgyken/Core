@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console;
+namespace Ignite\Core\Console;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;

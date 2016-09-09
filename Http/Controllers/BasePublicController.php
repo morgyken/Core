@@ -10,11 +10,11 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Http\Controllers;
+namespace Ignite\Core\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\App;
-use Modules\Core\Contracts\Authentication;
+use Ignite\Core\Contracts\Authentication;
 
 abstract class BasePublicController extends Controller {
 

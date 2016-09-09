@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Library;
+namespace Ignite\Core\Library;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -67,8 +67,8 @@ class CoreFunctions {
     public static function system_event_log($type, $text, $entity_id = null, $icon = null, $class = null, $assets = null) {
         //Type can be id or name
         if (!is_numeric($type))
-            $type = \Dervis\Modules\Core\Entities\LogTypes::firstOrCreate(['name' => $type])->first();
-        return \Dervis\Modules\Core\Entities\SystemLogs::create([
+            $type = \Dervis\Ignite\Core\Entities\LogTypes::firstOrCreate(['name' => $type])->first();
+        return \Dervis\Ignite\Core\Entities\SystemLogs::create([
                     'type_id' => $type->id,
                     'text' => $text,
                     'user_id' => access()->id(),

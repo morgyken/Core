@@ -10,13 +10,14 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Repositories;
+namespace Ignite\Core\Repositories;
+
 use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Class EloquentCoreRepository
  *
- * @package Modules\Core\Repositories\Eloquent
+ * @package Ignite\Core\Repositories\Eloquent
  */
 abstract class EloquentBaseRepository implements BaseRepository {
 

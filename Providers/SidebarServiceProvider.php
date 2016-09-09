@@ -10,12 +10,12 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Providers;
+namespace Ignite\Core\Providers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Maatwebsite\Sidebar\SidebarManager;
-use Modules\Core\Library\AdminSidebar;
+use Ignite\Core\Library\AdminSidebar;
 
 class SidebarServiceProvider extends ServiceProvider {
 

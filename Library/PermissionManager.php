@@ -10,9 +10,9 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Library;
+namespace Ignite\Core\Library;
 
-use Nwidart\Modules\Facades\Module;
+use Nwidart\Ignite\Facades\Module;
 
 /**
  * Description of PermissionManager

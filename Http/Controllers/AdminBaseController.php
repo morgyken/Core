@@ -10,13 +10,12 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Http\Controllers;
+namespace Ignite\Core\Http\Controllers;
 
 use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
 use Illuminate\Routing\Controller;
-use Modules\Core\Foundation\Asset\Manager\AssetManager;
-use Modules\Core\Foundation\Asset\Pipeline\AssetPipeline;
-use Nwidart\Modules\Facades\Module;
+use Ignite\Core\Foundation\Asset\Manager\AssetManager;
+use Ignite\Core\Foundation\Asset\Pipeline\AssetPipeline;
 
 class AdminBaseController extends Controller {
 
@@ -46,7 +45,7 @@ class AdminBaseController extends Controller {
             if (key($path) == 'theme') {
                 $this->assetManager->addAsset($assetName, Theme::url($path['theme']));
             } else {
-                $this->assetManager->addAsset($assetName, Module::asset($path['module']));
+                $this->assetManager->addAsset($assetName, \Module::asset($path['module']));
             }
         }
     }
@@ -60,7 +59,7 @@ class AdminBaseController extends Controller {
     }
 
     public function index() {
-        dd($this->assetPipeline);
+        return 'yaay!';
     }
 
 }

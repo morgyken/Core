@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Foundation\Asset\Manager;
+namespace Ignite\Core\Foundation\Asset\Manager;
 
 interface AssetManager {
 

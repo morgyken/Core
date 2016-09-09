@@ -10,14 +10,14 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Providers;
+namespace Ignite\Core\Providers;
 
 use Config;
-use Modules\Core\Console\PublishModuleAssetsCommand;
+use Ignite\Core\Console\PublishModuleAssetsCommand;
 use Illuminate\Support\ServiceProvider;
-use Modules\Core\Console\InstallCommand;
-use Modules\Core\Console\PublishThemeAssetsCommand;
-use Modules\Core\Foundation\Theme\ThemeManager;
+use Ignite\Core\Console\InstallCommand;
+use Ignite\Core\Console\PublishThemeAssetsCommand;
+use Ignite\Core\Foundation\Theme\ThemeManager;
 
 class CoreServiceProvider extends ServiceProvider {
 
@@ -153,7 +153,7 @@ class CoreServiceProvider extends ServiceProvider {
     private function registerMiddlewares() {
         foreach ($this->middleware as $module => $middlewares) {
             foreach ($middlewares as $name => $middleware) {
-                $class = "Modules\\{$module}\\Http\\Middleware\\{$middleware}";
+                $class = "Ignite\\{$module}\\Http\\Middleware\\{$middleware}";
                 $this->app['router']->middleware($name, $class);
             }
         }

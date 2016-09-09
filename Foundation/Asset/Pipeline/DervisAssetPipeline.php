@@ -10,11 +10,11 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Foundation\Asset\Pipeline;
+namespace Ignite\Core\Foundation\Asset\Pipeline;
 
 use Illuminate\Support\Collection;
-use Modules\Core\Foundation\Asset\AssetNotFoundException;
-use Modules\Core\Foundation\Asset\Manager\AssetManager;
+use Ignite\Core\Foundation\Asset\AssetNotFoundException;
+use Ignite\Core\Foundation\Asset\Manager\AssetManager;
 
 class DervisAssetPipeline implements AssetPipeline {
 

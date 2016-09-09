@@ -10,16 +10,16 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console\Installers\Scripts;
+namespace Ignite\Core\Console\Installers\Scripts;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
-use Modules\Core\Entities\UserProfile;
-use Modules\Core\Repositories\UserRepository;
+use Ignite\Core\Entities\UserProfile;
+use Ignite\Core\Repositories\UserRepository;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
-use Modules\Core\Console\Installers\SetupScript;
-use Modules\Core\Services\Composer;
+use Ignite\Core\Console\Installers\SetupScript;
+use Ignite\Core\Services\Composer;
 
 abstract class UserProviderInstaller implements SetupScript {
 
@@ -68,7 +68,7 @@ abstract class UserProviderInstaller implements SetupScript {
     public function fire(Command $command) {
         $this->command = $command;
 
-        //  $this->command->call('vendor:publish', ['--provider' => 'Modules\Core\Providers\CoreServiceProvider']);
+        //  $this->command->call('vendor:publish', ['--provider' => 'Ignite\Core\Providers\CoreServiceProvider']);
 
         if (!$this->checkIsInstalled()) {
             return $this->command->error('No user driver was installed. Please check the presence of a Service Provider');
@@ -131,7 +131,7 @@ abstract class UserProviderInstaller implements SetupScript {
 
         $config = $this->finder->get($path);
 
-        $config = str_replace($search, "Modules\\User\\Entities\\{$Driver}\\User", $config);
+        $config = str_replace($search, "Ignite\\User\\Entities\\{$Driver}\\User", $config);
 
         $this->finder->put($path, $config);
     }
@@ -143,13 +143,13 @@ abstract class UserProviderInstaller implements SetupScript {
      */
     protected function bindUserRepositoryOnTheFly($driver) {
         $this->application->bind(
-                'Modules\Core\Repositories\UserRepository', "Modules\\Core\\Repositories\\{$driver}UserRepository"
+                'Ignite\Core\Repositories\UserRepository', "Ignite\\Core\\Repositories\\{$driver}UserRepository"
         );
         $this->application->bind(
-                'Modules\User\Repositories\RoleRepository', "Modules\\Core\\Repositories\\{$driver}RoleRepository"
+                'Ignite\User\Repositories\RoleRepository', "Ignite\\Core\\Repositories\\{$driver}RoleRepository"
         );
         $this->application->bind(
-                'Modules\Core\Contracts\Authentication', "Modules\\Core\\Repositories\\{$driver}Authentication"
+                'Ignite\Core\Contracts\Authentication', "Ignite\\Core\\Repositories\\{$driver}Authentication"
         );
     }
 

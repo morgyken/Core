@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Foundation\Asset\Pipeline;
+namespace Ignite\Core\Foundation\Asset\Pipeline;
 
 interface AssetPipeline {
 

@@ -10,10 +10,10 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Console\Installers\Scripts;
+namespace Ignite\Core\Console\Installers\Scripts;
 
 use Illuminate\Console\Command;
-use Modules\Core\Console\Installers\SetupScript;
+use Ignite\Core\Console\Installers\SetupScript;
 
 class ModuleMigrator implements SetupScript {
 
@@ -39,7 +39,7 @@ class ModuleMigrator implements SetupScript {
     public function fire(Command $command) {
 
         $command->blockMessage('Migrations', 'Starting the module migrations ...', 'comment');
-        //dd(\Modules\Core\Console\InstallCommand::$outa);
+        //dd(\Ignite\Core\Console\InstallCommand::$outa);
         //$bar = $this->output->createProgressBar(count($this->modules));
         foreach ($this->modules as $module) {
             if (is_module_enabled($module)) {

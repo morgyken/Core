@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Http\Middleware;
+namespace Ignite\Core\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

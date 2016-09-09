@@ -10,14 +10,14 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Sidebar;
+namespace Ignite\Core\Sidebar;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Menu;
 use Maatwebsite\Sidebar\ShouldCache;
 use Maatwebsite\Sidebar\Sidebar;
 use Maatwebsite\Sidebar\Traits\CacheableTrait;
-use Nwidart\Modules\Contracts\RepositoryInterface;
+use Nwidart\Ignite\Contracts\RepositoryInterface;
 
 /**
  * Description of AdminSidebar
@@ -60,7 +60,7 @@ class AdminSidebar implements Sidebar, ShouldCache {
     public function build() {
         foreach ($this->modules->enabled() as $module) {
             $name = studly_case($module->get('name'));
-            $class = 'Modules\\' . $name . '\\Sidebar\\SidebarExtender';
+            $class = 'Ignite\\' . $name . '\\Sidebar\\SidebarExtender';
 
             if (class_exists($class)) {
                 $extender = $this->container->make($class);

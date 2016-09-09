@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Foundation\Theme;
+namespace Ignite\Core\Foundation\Theme;
 
 class Theme {
 

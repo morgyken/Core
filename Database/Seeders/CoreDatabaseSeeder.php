@@ -1,21 +1,21 @@
 <?php
 
-namespace Modules\Core\Database\Seeders;
+namespace Ignite\Core\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 
-class CoreDatabaseSeeder extends Seeder
-{
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
-	public function run()
-	{
-		Model::unguard();
+class CoreDatabaseSeeder extends Seeder {
 
-		// $this->call("OthersTableSeeder");
-	}
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run() {
+        Model::unguard();
+
+        // $this->call("OthersTableSeeder");
+    }
+
 }

@@ -10,14 +10,14 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Http\Middleware;
+namespace Ignite\Core\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Session\Store;
-use Modules\Core\Contracts\Authentication;
+use Ignite\Core\Contracts\Authentication;
 
 class AdminMiddleware {
 

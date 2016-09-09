@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Library;
+namespace Ignite\Core\Library;
 
 use Illuminate\Contracts\Container\Container;
 use Maatwebsite\Sidebar\Menu;
@@ -54,7 +54,7 @@ class AdminSidebar implements Sidebar, ShouldCache {
         $enabled = \Module::enabled();
         foreach ($enabled as $module) {
             $name = studly_case($module->get('name'));
-            $class = 'Modules\\' . $name . '\\Sidebar\\SidebarExtender';
+            $class = 'Ignite\\' . $name . '\\Sidebar\\SidebarExtender';
             if (class_exists($class)) {
                 $extender = $this->container->make($class);
                 $this->menu->add(

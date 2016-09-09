@@ -10,13 +10,13 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Library;
+namespace Ignite\Core\Library;
 
 use Illuminate\Config\Repository as Config;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Collection;
 use Symfony\Component\Yaml\Parser;
-use Nwidart\Modules\Module;
+use Nwidart\Ignite\Module;
 
 class ModuleManager {
 

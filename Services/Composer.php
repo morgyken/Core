@@ -10,7 +10,7 @@
  * =============================================================================
  */
 
-namespace Modules\Core\Services;
+namespace Ignite\Core\Services;
 
 use Symfony\Component\Process\Process;
 use Illuminate\Support\Composer as SupportComposer;
