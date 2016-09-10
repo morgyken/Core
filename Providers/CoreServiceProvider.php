@@ -31,7 +31,7 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * @var string
      */
-    protected $prefix = 'dervis';
+    protected $prefix = 'ignite';
 
     /**
      * The filters base class name.

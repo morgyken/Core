@@ -17,7 +17,7 @@ namespace Ignite\Core\Contracts;
  *
  * @author samuel
  */
-interface Setting {
+interface Settings {
 
     /**
      * Determine if the given configuration value exists.

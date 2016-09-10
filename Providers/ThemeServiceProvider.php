@@ -14,12 +14,13 @@ namespace Ignite\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class ThemeServiceProvider extends ServiceProvider { /**
- * Register the service provider.
- * @return void
- */
+class ThemeServiceProvider extends ServiceProvider {
 
-    public function register() {
+    /**
+     * Register the service provider.
+     * @return void
+     */
+    public function boot() {
         $this->app->booted(function () {
             $this->registerAllThemes();
             $this->setActiveTheme();
@@ -33,15 +34,11 @@ class ThemeServiceProvider extends ServiceProvider { /**
         if ($this->app->runningInConsole() || !app('system.isInstalled')) {
             return;
         }
-
         if ($this->inAdministration()) {
             $themeName = mconfig('core.core.admin-theme');
-
             return $this->app['stylist']->activate($themeName, true);
         }
-
-        $themeName = $this->app['setting.settings']->get('core::template', null, 'Flatly');
-
+        $themeName = 'Flatly'; // $this->app['setting.settings']->get('core::template', null, 'Flatly');
         return $this->app['stylist']->activate($themeName, true);
     }
 
@@ -50,10 +47,8 @@ class ThemeServiceProvider extends ServiceProvider { /**
      * @return bool
      */
     private function inAdministration() {
-        return true;
-        $segment = config('laravellocalization.hideDefaultLocaleInURL', false) ? 1 : 2;
-
-        return $this->app['request']->segment($segment) === $this->app['config']->get('asgard.core.core.admin-prefix');
+        return \Module::has(ucfirst($this->app['request']->segment(1)));
+        //return $this->app['request']->segment($segment) === $this->app['config']->get('asgard.core.core.admin-prefix');
     }
 
     /**

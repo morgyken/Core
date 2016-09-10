@@ -17,7 +17,7 @@ if (!function_exists('mconfig')) {
      * @return mixed
      */
     function mconfig($params) {
-        return config('dervis.' . $params);
+        return config('ignite.' . $params);
     }
 
 }
