@@ -76,15 +76,15 @@ class AdminMiddleware {
             $this->session->put('url.intended', $this->request->url());
 
             // Redirect to the login page
-            return $this->redirect->route('login');
+            return $this->redirect->route('public.login');
         }
-
-        // Check if the user has access to the dashboard page
-        if (!$this->auth->hasAccess('dashboard.index')) {
-            // Show the insufficient permissions page
-            return $this->application->abort(403);
-        }
-
+        /*
+          // Check if the user has access to the dashboard page
+          if (!$this->auth->hasAccess('dashboard.index')) {
+          // Show the insufficient permissions page
+          return $this->application->abort(403);
+          }
+         */
         return $next($request);
     }
 

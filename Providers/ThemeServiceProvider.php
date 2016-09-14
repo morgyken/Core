@@ -47,7 +47,11 @@ class ThemeServiceProvider extends ServiceProvider {
      * @return bool
      */
     private function inAdministration() {
-        return \Module::has(ucfirst($this->app['request']->segment(1)));
+        $ai = ucfirst($this->app['request']->segment(1));
+        if (empty($ai)) {
+            return true;
+        }
+        return \Module::has($ai);
         //return $this->app['request']->segment($segment) === $this->app['config']->get('asgard.core.core.admin-prefix');
     }
 

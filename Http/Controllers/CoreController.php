@@ -12,6 +12,7 @@
 
 namespace Ignite\Core\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Ignite\Core\Contracts\Authentication;
 
 class CoreController extends AdminBaseController {
@@ -24,7 +25,8 @@ class CoreController extends AdminBaseController {
     }
 
     public function resolve() {
-        dd($this->auth);
+        dd(Auth::user());
+        dd($this->auth->check());
     }
 
 }

@@ -31,6 +31,8 @@ class ModuleSeeders implements SetupScript {
         'Messaging',
         'Finance',
         'Inventory',
+        'Users',
+        'Settings',
     ];
 
     /**
@@ -41,13 +43,16 @@ class ModuleSeeders implements SetupScript {
     public function fire(Command $command) {
         $command->blockMessage('Seeds', 'Running the module seeds ...', 'comment');
         foreach ($this->modules as $module) {
-            if (is_module_enabled($module))
+            if (\Module::has($module)) {
                 $command->call('module:seed', ['module' => $module]);
+            }
         }
         if ($command->option('seed')) {
             $command->warn('Seeding extra data');
             foreach ($this->secondary as $module) {
-                $command->call('module:seed', ['module' => $module]);
+                if (\Module::has($module)) {
+                    $command->call('module:seed', ['module' => $module]);
+                }
             }
         }
     }

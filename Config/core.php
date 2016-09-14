@@ -48,12 +48,10 @@ return [
     'middleware' => [
         'backend' => [
             'auth.admin',
-            'permissions',
+        // 'permissions',
         ],
-        'frontend' => [
-        ],
-        'api' => [
-        ],
+        'frontend' => ['guest'],
+        'api' => ['auth:api'],
     ],
     /*
       |--------------------------------------------------------------------------

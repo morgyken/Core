@@ -12,6 +12,8 @@
         "Ignite\\Core\\Providers\\EventServiceProvider",
         "Ignite\\Core\\Providers\\SidebarServiceProvider",
         "Ignite\\Core\\Providers\\AssetServiceProvider",
+        "Ignite\\Core\\Providers\\DashboardServiceProvider",
+        "Ignite\\Core\\Providers\\WidgetServiceProvider",
         "Collective\\Html\\HtmlServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
         "FloatingPoint\\Stylist\\StylistServiceProvider",
@@ -23,6 +25,6 @@
     },
     "files": [
         "start.php",
-        "helpers.php"
+        "composers.php"
     ]
 }

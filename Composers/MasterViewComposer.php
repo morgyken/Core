@@ -13,8 +13,8 @@
 namespace Ignite\Core\Composers;
 
 use Illuminate\Contracts\View\View;
-use Ignite\Core\Contracts\Setting;
 use Ignite\Core\Foundation\Asset\Pipeline\AssetPipeline;
+use Setting;
 
 /**
  * Description of MasterViewComposer
@@ -39,7 +39,8 @@ class MasterViewComposer {
     }
 
     public function compose(View $view) {
-        //$view->with('sitename', $this->setting->get('core::site-name', App::getLocale()));
+        $view->with('sitename', 'Collabmed');
+        // $view->with('sitename', $this->setting->get('core::site-name', App::getLocale()));
         $view->with('cssFiles', $this->assetPipeline->allCss());
         $view->with('jsFiles', $this->assetPipeline->allJs());
     }

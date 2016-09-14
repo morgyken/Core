@@ -58,9 +58,7 @@ class AuthorizationMiddleware {
         if (!$request->user()) {
             return redirect()->guest('auth/login');
         }
-
-        flash()->error(trans('core::core.permission denied', ['permission' => $permission]));
-
+        flash()->error("Permission ($permission) denied");
         return redirect()->back();
     }
 

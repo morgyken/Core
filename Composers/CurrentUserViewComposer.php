@@ -13,21 +13,19 @@
 namespace Ignite\Core\Composers;
 
 use Illuminate\Contracts\View\View;
-use Ignite\Core\Contracts\Authentication;
+use Illuminate\Support\Facades\Auth;
 
+/**
+ * Class CurrentUserViewComposer
+ * @package Ignite\Core\Composers
+ */
 class CurrentUserViewComposer {
 
     /**
-     * @var Authentication
+     * @param View $view
      */
-    private $auth;
-
-    public function __construct(Authentication $auth) {
-        $this->auth = $auth;
-    }
-
     public function compose(View $view) {
-        $view->with('user', $this->auth->check());
+        $view->with('user', Auth::user());
     }
 
 }

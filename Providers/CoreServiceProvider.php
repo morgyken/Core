@@ -53,7 +53,6 @@ class CoreServiceProvider extends ServiceProvider {
      */
     public function boot() {
         $this->registerMiddlewares();
-        $this->registerModuleResourceNamespaces();
         $this->registerTranslations();
         // $this->registerConfig();
         //$this->registerViews();
@@ -80,6 +79,8 @@ class CoreServiceProvider extends ServiceProvider {
 
         $this->registerCommands();
         $this->registerServices();
+
+        $this->registerModuleResourceNamespaces();
     }
 
     /**
@@ -171,9 +172,6 @@ class CoreServiceProvider extends ServiceProvider {
      * @param Module $module
      */
     protected function registerViewNamespace($module) {
-        if ($module->getName() == 'user') {
-            return;
-        }
         $this->app['view']->addNamespace(
                 $module->getName(), $module->getPath() . '/Resources/views'
         );
