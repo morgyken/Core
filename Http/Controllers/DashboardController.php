@@ -69,12 +69,12 @@ class DashboardController extends AdminBaseController {
         $widget = $this->widget->findForUser($this->auth->check()->id);
 
         if (!$widget) {
-            return redirect()->route('dashboard.index')->with('warning', trans('dashboard::dashboard.reset not needed'));
+            flash()->warning('Dashboard reset not needed');
+            return redirect()->route('dashboard');
         }
-
         $this->widget->destroy($widget);
-
-        return redirect()->route('dashboard.index')->with('success', trans('dashboard::dashboard.dashboard reset'));
+        flash('Dashboard has been reset');
+        return redirect()->route('dashboard');
     }
 
     /**

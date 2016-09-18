@@ -20,51 +20,6 @@ namespace Ignite\Core\Library;
 class Validation {
 
     /**
-     * Practice Validation
-     * @return array The validation rules to be used by laravel
-     */
-    public static function validate_practice() {
-        return [
-            "name" => "required",
-            "address" => "required",
-            "telephone" => "required",
-            "mobile" => "",
-            "email" => "required|email",
-            "fax" => "",
-            "country" => "required",
-            "town" => "required",
-            "street" => "",
-            "building" => "",
-            "office" => "",
-            "pin" => ""
-        ];
-    }
-
-    /**
-     * Clinic validation rules
-     *
-     * @return array Clinic validation rules
-     */
-    public static function validate_clinic() {
-        return [
-            "name" => "required",
-            "address" => "required",
-            "telephone" => "required",
-            "fax" => "",
-            "location" => "",
-            "town" => "required",
-            "mobile" => "",
-            "email" => "required|email",
-            "status" => "required",
-            "street" => "",
-            "building" => "",
-            "office" => "",
-            "type" => "required",
-            "practice_id" => "required",
-        ];
-    }
-
-    /**
      * Ward Validation
      * @return array The validation rules
      */
@@ -168,22 +123,6 @@ class Validation {
             "street" => "",
             "building" => "",
             "code" => ""
-        ];
-    }
-
-    /**
-     * Scheme validation
-     * @return array
-     */
-    public static function validate_insurance_schemes() {
-        return [
-            "name" => "required",
-            "company" => "required",
-            "type" => "required",
-            "attention" => "required",
-            "amount" => "required_if:type,2,3",
-            "effective_date" => "required|date",
-            "expiry_date" => "required|date"
         ];
     }
 

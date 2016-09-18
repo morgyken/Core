@@ -48,6 +48,7 @@ return [
     'middleware' => [
         'backend' => [
             'auth.admin',
+            'setup'
         // 'permissions',
         ],
         'frontend' => ['guest'],
@@ -70,6 +71,8 @@ return [
         'AdminLTE.css' => ['theme' => 'vendor/admin-lte/dist/css/AdminLTE.css'],
         'AdminLTE.all.skins.css' => ['theme' => 'vendor/admin-lte/dist/css/skins/_all-skins.min.css'],
         'asgard.css' => ['theme' => 'css/asgard.css'],
+        'select2.css' => ['theme' => 'plugins/select2/select2.min.css'],
+        'select2-bs.css' => ['theme' => 'plugins/select2/select2-bootstrap.min.css'],
         //'gridstack.css' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.css'],
         'gridstack.css' => ['module' => 'dashboard:gridstack/gridstack.min.css'],
         'daterangepicker.css' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker-bs3.css'],
@@ -88,6 +91,9 @@ return [
         'app.js' => ['theme' => 'vendor/admin-lte/dist/js/app.js'],
         'keypressAction.js' => ['module' => 'core:js/keypressAction.js'],
         'ckeditor.js' => ['theme' => 'js/vendor/ckeditor/ckeditor.js'],
+        'jquery-ui.js' => ['theme' => 'plugins/ui/jquery-ui.min.js'],
+        'select2.js' => ['theme' => 'plugins/select2/select2.min.js'],
+        'time.js' => ['theme' => 'plugins/time/jquery.timeAutocomplete.min.js'],
         'lodash.js' => ['module' => 'dashboard:vendor/lodash/lodash.min.js'],
         'jquery-ui-core.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/core.min.js'],
         'jquery-ui-widget.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/widget.min.js'],
@@ -123,6 +129,8 @@ return [
             'animate.css',
             'pace.css',
             'asgard.css',
+            'select2.css',
+            'select2-bs.css',
         ],
         'js' => [
             'bootstrap.js',
@@ -132,6 +140,9 @@ return [
             'jquery.dataTables.js',
             'dataTables.bootstrap.js',
             'jquery.slug.js',
+            'jquery-ui.js',
+            'select2.js',
+            'time.js',
             'keypressAction.js',
             'app.js',
             'pace.js',

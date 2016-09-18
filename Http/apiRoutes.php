@@ -23,9 +23,9 @@ Route::group(['prefix' => 'users',
 Route::group(['prefix' => 'users',
     'middleware' => mconfig('core.core.middleware.api'),
     'namespace' => $namespace,], function () {
-    Route::post('file', ['uses' => 'MediaController@store', 'as' => 'api.media.store']);
-    Route::post('media/link', ['uses' => 'MediaController@linkMedia', 'as' => 'api.media.link']);
-    Route::post('media/unlink', ['uses' => 'MediaController@unlinkMedia', 'as' => 'api.media.unlink']);
-    Route::get('media/all', ['uses' => 'MediaController@all', 'as' => 'api.media.all',]);
-    Route::post('media/sort', ['uses' => 'MediaController@sortMedia', 'as' => 'api.media.sort']);
+    Route::post('file', ['uses' => 'CoreController@store', 'as' => 'api.media.store']);
+    Route::post('media/link', ['uses' => 'CoreController@linkCore', 'as' => 'api.media.link']);
+    Route::post('media/unlink', ['uses' => 'CoreController@unlinkCore', 'as' => 'api.media.unlink']);
+    Route::get('media/all', ['uses' => 'CoreController@all', 'as' => 'api.media.all',]);
+    Route::post('media/sort', ['uses' => 'CoreController@sortCore', 'as' => 'api.media.sort']);
 });

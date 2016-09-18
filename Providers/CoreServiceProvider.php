@@ -14,6 +14,7 @@ namespace Ignite\Core\Providers;
 
 use Config;
 use Ignite\Core\Console\PublishModuleAssetsCommand;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Ignite\Core\Console\InstallCommand;
 use Ignite\Core\Console\PublishThemeAssetsCommand;
@@ -54,8 +55,8 @@ class CoreServiceProvider extends ServiceProvider {
     public function boot() {
         $this->registerMiddlewares();
         $this->registerTranslations();
-        // $this->registerConfig();
-        //$this->registerViews();
+        $this->registerConfig();
+        $this->registerViews();
     }
 
     /**
@@ -66,14 +67,11 @@ class CoreServiceProvider extends ServiceProvider {
     public function register() {
         $this->app->singleton('system.isInstalled', function ($app) {
             $envFileLocation = "{$app->environmentPath()}/{$app->environmentFile()}";
-            $hasTable = true;
-            /*
-              try {
-              $hasTable = Schema::hasTable('setting__settings');
-              } catch (\Exception $e) {
-              $hasTable = false;
-              }
-             */
+            try {
+                $hasTable = Schema::hasTable('users');
+            } catch (\Exception $e) {
+                $hasTable = false;
+            }
             return $app['files']->isFile($envFileLocation) && $hasTable;
         });
 

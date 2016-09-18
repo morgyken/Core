@@ -17,11 +17,13 @@
         "Collective\\Html\\HtmlServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
         "FloatingPoint\\Stylist\\StylistServiceProvider",
-        "Maatwebsite\\Sidebar\\SidebarServiceProvider"
+        "Maatwebsite\\Sidebar\\SidebarServiceProvider",
+        "Jenssegers\\Date\\DateServiceProvider"
     ],
     "aliases": {
         "Form": "Collective\\Html\\FormFacade",
-        "Flash": "Laracasts\\Flash\\Flash"
+        "Flash": "Laracasts\\Flash\\Flash",
+        "Date": "Jenssegers\\Date\\Date"
     },
     "files": [
         "start.php",

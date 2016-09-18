@@ -7,7 +7,7 @@
  *
  * =============================================================================
  */ ?>
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('content-header')
 <h1 class="pull-left">Dashboard</h1>

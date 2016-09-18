@@ -42,19 +42,23 @@ class ModuleSeeders implements SetupScript {
      */
     public function fire(Command $command) {
         $command->blockMessage('Seeds', 'Running the module seeds ...', 'comment');
-        foreach ($this->modules as $module) {
-            if (\Module::has($module)) {
-                $command->call('module:seed', ['module' => $module]);
-            }
-        }
-        if ($command->option('seed')) {
-            $command->warn('Seeding extra data');
-            foreach ($this->secondary as $module) {
-                if (\Module::has($module)) {
-                    $command->call('module:seed', ['module' => $module]);
-                }
-            }
-        }
+        foreach (\Module::getOrdered() as $module) {
+            $command->info("***** [" . $module->getName() . "] ****");
+            $command->call('module:seed', ['module' => $module->getName()]);
+        }/*
+          foreach ($this->modules as $module) {
+          if (\Module::has($module)) {
+          $command->call('module:seed', ['module' => $module]);
+          }
+          }
+          if ($command->option('seed')) {
+          $command->warn('Seeding extra data');
+          foreach ($this->secondary as $module) {
+          if (\Module::has($module)) {
+          $command->call('module:seed', ['module' => $module]);
+          }
+          }
+          } */
     }
 
 }
