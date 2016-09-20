@@ -1,0 +1,6 @@
+url: https://bitbucket.org/collabmed/core.git
+versions:
+    "1.0.0":
+        added:
+            - Initial release
+

@@ -35,7 +35,7 @@ interface Settings {
      * @param  mixed  $default
      * @return string
      */
-    public function get($key, $locale = null, $default = null);
+    public function get($key, $default = null);
 
     /**
      * Set a given configuration value.

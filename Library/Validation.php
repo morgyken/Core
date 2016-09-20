@@ -127,37 +127,6 @@ class Validation {
     }
 
     /**
-     * Patient Data Validation
-     * @return array
-     */
-    public static function validate_patients() {
-        return [
-            //basics
-            "first_name" => "required",
-            "midle_name" => "",
-            "last_name" => "required",
-            "dob" => "required",
-            "id_no" => "numeric",
-            "sex" => "required",
-            //contacts
-            "telephone" => "",
-            "mobile" => "required",
-            "email" => "email",
-            "alt_number" => "",
-            "address" => "",
-            "post_code" => "numeric",
-            "town" => "required_with:address",
-            /* "first_name_nok" => "required_with_all:last_name_nok,mobile_nok,nok_relationship",
-              "middle_name_nok" => "",
-              "last_name_nok" => "",
-              "mobile_nok" => "",
-              "nok_relationship" => "", */
-            "insured" => "required",
-            "image" => "image"
-        ];
-    }
-
-    /**
      * @return array Procedure Category Validation rules
      */
     public static function validate_procedure_category() {

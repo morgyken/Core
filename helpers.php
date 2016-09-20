@@ -29,7 +29,7 @@ if (!function_exists('smart_date')) {
      * @return mixed
      */
     function smart_date($the_date) {
-        return (new \Date($the_date))->format('jS M Y');
+        return (new \Date($the_date))->format('jS M y');
     }
 
 }
@@ -45,7 +45,7 @@ if (!function_exists('smart_time')) {
     }
 
 }
-if (!function_exists('smart_date')) {
+if (!function_exists('smart_date_time')) {
 
     /**
      * Nice way to show date and time

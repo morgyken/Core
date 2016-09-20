@@ -23,6 +23,16 @@ class AdminBaseController extends Controller {
      * @var AssetManager
      */
     protected $assetManager;
+    /**
+     * @var AssetPipeline|\Illuminate\Foundation\Application|mixed
+     */
+    protected $assetPipeline;
+
+    /**
+     * The application featured data
+     * @var array
+     */
+    public $data = [];
 
     /**
      * @var AssetPipeline
@@ -56,10 +66,6 @@ class AdminBaseController extends Controller {
     private function requireDefaultAssets() {
         $this->assetPipeline->requireCss(mconfig('core.core.admin-required-assets.css'));
         $this->assetPipeline->requireJs(mconfig('core.core.admin-required-assets.js'));
-    }
-
-    public function index() {
-        return 'yaay!';
     }
 
 }

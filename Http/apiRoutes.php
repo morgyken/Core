@@ -20,6 +20,7 @@ Route::group(['prefix' => 'users',
 });
 
 //temporal medias
+/**
 Route::group(['prefix' => 'users',
     'middleware' => mconfig('core.core.middleware.api'),
     'namespace' => $namespace,], function () {
@@ -29,3 +30,4 @@ Route::group(['prefix' => 'users',
     Route::get('media/all', ['uses' => 'CoreController@all', 'as' => 'api.media.all',]);
     Route::post('media/sort', ['uses' => 'CoreController@sortCore', 'as' => 'api.media.sort']);
 });
+*/
