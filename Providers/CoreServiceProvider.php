@@ -13,7 +13,9 @@
 namespace Ignite\Core\Providers;
 
 use Config;
+use Ignite\Core\Console\ModuleScaffoldCommand;
 use Ignite\Core\Console\PublishModuleAssetsCommand;
+use Ignite\Core\Console\UpdateModuleCommmand;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Ignite\Core\Console\InstallCommand;
@@ -137,6 +139,8 @@ class CoreServiceProvider extends ServiceProvider {
             InstallCommand::class,
             PublishThemeAssetsCommand::class,
             PublishModuleAssetsCommand::class,
+            UpdateModuleCommmand::class,
+            ModuleScaffoldCommand::class,
         ]);
     }
 

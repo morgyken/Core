@@ -10,4 +10,14 @@
  * =============================================================================
  */
 return [
+    'workshop.modules' => [
+        'index',
+        'show',
+        'disable',
+        'enable',
+    ],
+    'workshop.themes' => [
+        'index',
+        'show',
+    ],
 ];

@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class PublishModuleAssetsCommand extends Command {
 
-    protected $name = 'system:publish:module';
+    protected $name = 'system:module:publish';
     protected $description = 'Publish module assets';
 
     public function fire() {

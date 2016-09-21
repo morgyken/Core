@@ -17,7 +17,7 @@ use Symfony\Component\Console\Input\InputArgument;
 
 class PublishThemeAssetsCommand extends Command {
 
-    protected $name = 'system:publish:theme';
+    protected $name = 'system:theme:publish';
     protected $description = 'Publish theme assets';
 
     public function fire() {
