@@ -134,7 +134,7 @@ return [
             'asgard.css',
             'select2.css',
             'select2-bs.css',
-            'jquery-ui.css'
+            'jquery-ui.css',
         ],
         'js' => [
             'bootstrap.js',
