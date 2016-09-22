@@ -41,10 +41,10 @@ Route::group([
 
     # Workbench
     Route::get('workbench', ['as' => 'workbench.index', 'uses' => 'WorkbenchController@index']);
-    Route::post('generate', ['as' => 'workbench.generate.index', 'uses' => 'WorkbenchController@generate']);
-    Route::post('migrate', ['as' => 'workbench.migrate.index', 'uses' => 'WorkbenchController@migrate']);
-    Route::post('install', ['as' => 'workbench.install.index', 'uses' => 'WorkbenchController@install']);
-    Route::post('seed', ['as' => 'workbench.seed.index', 'uses' => 'WorkbenchController@seed']);
+    Route::post('generate', ['as' => 'workbench.generate', 'uses' => 'WorkbenchController@generate']);
+    Route::post('migrate', ['as' => 'workbench.migrate', 'uses' => 'WorkbenchController@migrate']);
+    Route::post('install', ['as' => 'workbench.install', 'uses' => 'WorkbenchController@install']);
+    Route::post('seed', ['as' => 'workbench.seed', 'uses' => 'WorkbenchController@seed']);
 });
 
 ///temporal media container

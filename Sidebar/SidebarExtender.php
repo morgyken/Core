@@ -54,9 +54,15 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender {
                     $item->authorize(true);
                 });
                 $item->item('Themes', function (Item $item) {
-                    $item->icon('fa fa-themeisle');
+                    $item->icon('fa fa-desktop');
                     $item->weight(101);
                     $item->route('system.themes.index');
+                    $item->authorize(true);
+                });
+                $item->item('Workbench', function (Item $item) {
+                    $item->icon('fa fa-coffee');
+                    $item->weight(101);
+                    $item->route('system.workbench.index');
                     $item->authorize(true);
                 });
             });

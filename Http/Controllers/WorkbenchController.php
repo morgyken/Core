@@ -12,6 +12,8 @@
 
 namespace Ignite\Core\Http\Controllers;
 
+use Illuminate\Support\Facades\View;
+
 class WorkbenchController extends AdminBaseController {
 
     public function __construct() {
@@ -23,7 +25,7 @@ class WorkbenchController extends AdminBaseController {
      * @return mixed
      */
     public function index() {
-        return View::make('workshop::admin.workbench.index');
+        return View::make('core::workbench.index');
     }
 
     /**
