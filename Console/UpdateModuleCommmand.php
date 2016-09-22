@@ -51,7 +51,6 @@ class UpdateModuleCommmand extends Command {
         $packageName = $this->getModulePackageName($this->argument('module'));
         $this->composer->enableOutput($this);
         $this->composer->update($packageName);
-        dd($this->composer);
     }
 
     /**

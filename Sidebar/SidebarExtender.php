@@ -43,7 +43,22 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender {
             $group->item('Dashboard', function (Item $item) {
                 $item->icon('fa fa-dashboard');
                 $item->route('dashboard');
-                //$item->isActiveWhen(route('dashboard.index', null, false));
+            });
+            $group->item('Sudo', function (Item $item) {
+                $item->icon('fa fa-code');
+
+                $item->item('Modules', function (Item $item) {
+                    $item->icon('fa fa-cogs');
+                    $item->weight(100);
+                    $item->route('system.modules.index');
+                    $item->authorize(true);
+                });
+                $item->item('Themes', function (Item $item) {
+                    $item->icon('fa fa-cogs');
+                    $item->weight(101);
+                    $item->route('system.themes.index');
+                    $item->authorize(true);
+                });
             });
         });
         return $menu;

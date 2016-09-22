@@ -16,6 +16,8 @@ use Illuminate\Support\ServiceProvider;
 
 class ThemeServiceProvider extends ServiceProvider {
 
+    protected $route_prefix = ['system'];
+
     /**
      * Register the service provider.
      * @return void
@@ -47,11 +49,11 @@ class ThemeServiceProvider extends ServiceProvider {
      * @return bool
      */
     private function inAdministration() {
-        $ai = ucfirst($this->app['request']->segment(1));
+        $ai = $this->app['request']->segment(1);
         if (empty($ai)) {
             return true;
         }
-        return \Module::has($ai);
+        return in_array($ai, $this->route_prefix) || \Module::has(ucfirst($ai));
         //return $this->app['request']->segment($segment) === $this->app['config']->get('asgard.core.core.admin-prefix');
     }
 

@@ -15,6 +15,7 @@ namespace Ignite\Core\Providers;
 use Config;
 use Ignite\Core\Console\ModuleScaffoldCommand;
 use Ignite\Core\Console\PublishModuleAssetsCommand;
+use Ignite\Core\Console\ThemeScaffoldCommand;
 use Ignite\Core\Console\UpdateModuleCommmand;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -141,6 +142,7 @@ class CoreServiceProvider extends ServiceProvider {
             PublishModuleAssetsCommand::class,
             UpdateModuleCommmand::class,
             ModuleScaffoldCommand::class,
+            ThemeScaffoldCommand::class,
         ]);
     }
 
@@ -214,7 +216,6 @@ class CoreServiceProvider extends ServiceProvider {
         $this->app->singleton(ThemeManager::class, function ($app) {
             $path = mconfig('core.core.themes_path');
             //$path = $app['config']->get('asgard.core.core.themes_path');
-
             return new ThemeManager($app, $path);
         });
     }

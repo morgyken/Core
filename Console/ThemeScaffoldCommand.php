@@ -6,41 +6,21 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class ModuleScaffoldCommand extends Command {
+class ThemeScaffoldCommand extends Command {
 
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'system:module:scaffold';
+    protected $name = 'system:theme:scaffold';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Scaffold a new module.';
-
-    /**
-     * @var array
-     */
-    protected $entities = [];
-
-    /**
-     * @var array
-     */
-    protected $valueObjects = [];
-
-    /**
-     * @var string The type of entities to generate [Eloquent or Doctrine]
-     */
-    protected $entityType;
-
-    /**
-     * @var ModuleScaffold
-     */
-    private $moduleScaffold;
+    protected $description = 'Scaffold a new theme.';
 
     /**
      * Create a new command instance.

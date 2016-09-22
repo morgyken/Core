@@ -138,19 +138,15 @@ class ModuleManager {
      * @param Module $module
      * @return array
      */
-    public function changelogFor(Module $module) {
+    public function changelogFor($mod) {
+        $module = \Module::find($mod);
         $path = $module->getPath() . '/changelog.yml';
         if (!$this->finder->isFile($path)) {
             return [];
         }
-
         $yamlParser = new Parser();
-
         $changelog = $yamlParser->parse(file_get_contents($path));
-
-
         $changelog['versions'] = $this->limitLastVersionsAmount(array_get($changelog, 'versions', []));
-
         return $changelog;
     }
 

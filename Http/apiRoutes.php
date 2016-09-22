@@ -12,11 +12,12 @@
 $namespace = 'Ignite\Core\Http\Controllers';
 
 //back-end routes
-Route::group(['prefix' => 'users',
+Route::group(['prefix' => 'api/core',
     'middleware' => mconfig('core.core.middleware.api'),
     'namespace' => $namespace,
-    'as' => 'core.api.'], function () {
-
+    'as' => 'api.core.'], function () {
+    Route::post('/system/modules/{module}/publish', ['as' => 'module.publish', 'uses' => 'ModulesController@publishAssets']);
+    Route::post('/system/themes/{theme}/publish', ['as' => 'theme.publish', 'uses' => 'ThemeController@publishAssets']);
 });
 
 //temporal medias
