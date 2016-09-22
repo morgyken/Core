@@ -24,4 +24,10 @@ interface ThemeManager {
      * @return array
      */
     public function all();
+
+    /**
+     * @param $theme
+     * @return mixed
+     */
+    public function find($theme);
 }

@@ -16,8 +16,8 @@ Route::group(['prefix' => 'api/core',
     'middleware' => mconfig('core.core.middleware.api'),
     'namespace' => $namespace,
     'as' => 'api.core.'], function () {
-    Route::post('/system/modules/{module}/publish', ['as' => 'module.publish', 'uses' => 'ModulesController@publishAssets']);
-    Route::post('/system/themes/{theme}/publish', ['as' => 'theme.publish', 'uses' => 'ThemeController@publishAssets']);
+    Route::post('/system/modules/{module}/publish', ['as' => 'module.publish', 'uses' => 'ApiController@publishModuleAssets']);
+    Route::post('/system/themes/{theme}/publish', ['as' => 'theme.publish', 'uses' => 'ApiController@publishThemeAssets']);
 });
 
 //temporal medias

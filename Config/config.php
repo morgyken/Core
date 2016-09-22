@@ -1,5 +1,10 @@
 <?php
 
 return [
-	'name' => 'Core'
+    'name' => 'Core',
+    'core_modules' => [
+        'Core',
+        'Settings',
+        'Users'
+    ],
 ];

@@ -33,7 +33,7 @@ $routeName = $module->enabled() ? 'disable' : 'enable';
             <div class="box-header">
                 <div class="box-tools pull-right">
                     <button class="btn btn-box-tool jsPublishAssets" data-toggle="tooltip"
-                            title="" data-original-title="{{ trans("workshop::modules.publish assets") }}">
+                            title="" data-original-title="Publish assets">
                         <i class="fa fa-cloud-upload"></i> Publish Assets
                     </button>
                     <?php ?>
@@ -61,23 +61,47 @@ $routeName = $module->enabled() ? 'disable' : 'enable';
         </div>
     </div>
 </div>
-<?php if (!empty($changelog) && count($changelog['versions'])): ?>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box box-primary">
-                <div class="box-header">
-                    <h3 class="box-title"><i class="fa fa-bars"></i> {{ trans('workshop::modules.changelog')}}</h3>
-                    <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                    </div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title"><i class="fa fa-bars"></i> Changelog</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 </div>
-                <div class="box-body">
-                    @include('core::modules.partials.changelog')
-                </div>
+            </div>
+            <div class="box-body">
+                @if(!empty($changelog))
+                @include('core::modules.partials.changelog')
+                @endif
             </div>
         </div>
     </div>
-<?php endif; ?>
+    <div class="col-md-6">
+        <div class="box box-primary">
+            <div class="box-header">
+                <h3 class="box-title"><i class="fa fa-info"></i> Module Information</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                </div>
+            </div>
+            <div class="box-body">
+                <dl class="dl-horizontal">
+                    <dt>Name:</dt><dd>{{ $module->name }}</dd>
+                    <dt>Description:</dt><dd>{{$module->description}}</dd>
+                    <dt>Author:</dt><dd>{{$module->author}}</dd>
+                    <dt>Email:</dt><dd><small><code>{{$module->email}}</code></small></dd>
+                    <dt>Version</dt><dd>{{ str_replace('v', '', $module->version) }}</dd>
+                    <dt>Status</dt><dd>
+                        <span class="label label-{{$module->enabled() ? 'success' : 'danger'}}">
+                            {{ $module->enabled() ?'Enabled' : 'Disabled'}}
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
 @stop
 
 @section('scripts')

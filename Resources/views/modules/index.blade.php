@@ -22,27 +22,30 @@
                 <table class="data-table table table-bordered table-hover">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Name</th>
                             <th>Description</th>
-                            <th width="20%">Author</th>
-                            <th width="15%">Version</th>
-                            <th width="15%">Enabled</th>
-                            <th></th>
+                            <th width="10%">Author</th>
+                            <th width="5%">Version</th>
+                            <th width="5%">Enabled</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data['modules'] as $module)
                         <tr>
-                            <td>{{ $module->name }}</td>
+                            <td>{{$loop->iteration}}</td>
+                            <td><a href="{{ route('system.modules.show', [$module->getLowerName()]) }}">{{ $module->name }}</a></td>
                             <td>{{$module->description}}</td>
-                            <td>{{$module->author}} <small><code>{{$module->email}}</code></small></td>
+                            <td>{{$module->author}}</td>
                             <td>{{ str_replace('v', '', $module->version) }}</td>
                             <td>
                                 <span class="label label-{{$module->enabled() ? 'success' : 'danger'}}">
                                     {{ $module->enabled() ?'Enabled' : 'Disabled'}}
                                 </span>
                             </td>
-                            <td><a href="{{ route('system.modules.show', [$module->getLowerName()]) }}">
+                            <td><a href="{{ route('system.modules.show', [$module->getLowerName()]) }}"
+                                   class="btn btn-xs btn-primary">
                                     <i class="fa fa-wrench"></i> Manage</a></td>
                         </tr>
                         @endforeach

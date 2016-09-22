@@ -12,6 +12,8 @@
 
 namespace Ignite\Core\Providers;
 
+use Ignite\Core\Library\StylistThemeManager;
+use Ignite\Core\Library\ThemeManager;
 use Illuminate\Support\ServiceProvider;
 
 class ThemeServiceProvider extends ServiceProvider {
@@ -27,6 +29,7 @@ class ThemeServiceProvider extends ServiceProvider {
             $this->registerAllThemes();
             $this->setActiveTheme();
         });
+        $this->bindThemeManager();
     }
 
     /**
@@ -66,6 +69,15 @@ class ThemeServiceProvider extends ServiceProvider {
         foreach ($directories as $directory) {
             $this->app['stylist']->registerPath($directory);
         }
+    }
+
+    /**
+     * Bind the theme manager
+     */
+    private function bindThemeManager() {
+        $this->app->singleton(ThemeManager::class, function ($app) {
+            return new StylistThemeManager($app['files']);
+        });
     }
 
 }

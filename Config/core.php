@@ -96,11 +96,13 @@ return [
         'select2.js' => ['theme' => 'plugins/select2/select2.min.js'],
         'time.js' => ['theme' => 'plugins/time/jquery.timeAutocomplete.min.js'],
         'lodash.js' => ['module' => 'dashboard:vendor/lodash/lodash.min.js'],
-        'jquery-ui-core.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/core.min.js'],
-        'jquery-ui-widget.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/widget.min.js'],
-        'jquery-ui-mouse.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/mouse.min.js'],
-        'jquery-ui-draggable.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/draggable.min.js'],
-        'jquery-ui-resizable.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/resizable.min.js'],
+        /* 'jquery-ui-core.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/core.min.js'],
+          'jquery-ui-widget.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/widget.min.js'],
+          'jquery-ui-mouse.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/mouse.min.js'],
+          'jquery-ui-draggable.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/draggable.min.js'],
+          'jquery-ui-resizable.js' => ['module' => 'dashboard:vendor/jquery-ui/ui/minified/resizable.min.js'], */
+        'jquery-ui.js' => ['theme' => 'vendor/jquery-ui-new/jquery-ui.min.js'],
+        'jquery-ui.css' => ['theme' => 'vendor/jquery-ui-new/jquery-ui.min.css'],
         //'gridstack.js' => ['module' => 'dashboard:vendor/gridstack/dist/gridstack.min.js'],
         'gridstack.js' => ['module' => 'dashboard:gridstack/gridstack.min.js'],
         'daterangepicker.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/daterangepicker.js'],
@@ -132,6 +134,7 @@ return [
             'asgard.css',
             'select2.css',
             'select2-bs.css',
+            'jquery-ui.css'
         ],
         'js' => [
             'bootstrap.js',
@@ -149,6 +152,7 @@ return [
             'pace.js',
             'main.js',
             'sisyphus.js',
+            'jquery-ui.js',
         ],
     ],
 ];

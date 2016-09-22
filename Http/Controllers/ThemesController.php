@@ -32,16 +32,17 @@ class ThemesController extends AdminBaseController {
      * @return \Illuminate\View\View
      */
     public function index() {
-        $themes = $this->themeManager->all();
-        return view('workshop::admin.themes.index', compact('themes'));
+        $this->data['themes'] = $this->themeManager->all();
+        return view('core::themes.index', ['data' => $this->data]);
     }
 
     /**
      * @param Theme $theme
      * @return \Illuminate\View\View
      */
-    public function show(Theme $theme) {
-        return view('workshop::admin.themes.show', compact('theme'));
+    public function show($theme) {
+        $this->data['theme'] = $this->themeManager->find($theme);
+        return view('core::themes.show', ['data' => $this->data]);
     }
 
 }

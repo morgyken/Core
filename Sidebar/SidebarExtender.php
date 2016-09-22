@@ -48,13 +48,13 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender {
                 $item->icon('fa fa-code');
 
                 $item->item('Modules', function (Item $item) {
-                    $item->icon('fa fa-cogs');
+                    $item->icon('fa-puzzle-piece');
                     $item->weight(100);
                     $item->route('system.modules.index');
                     $item->authorize(true);
                 });
                 $item->item('Themes', function (Item $item) {
-                    $item->icon('fa fa-cogs');
+                    $item->icon('fa fa-themeisle');
                     $item->weight(101);
                     $item->route('system.themes.index');
                     $item->authorize(true);

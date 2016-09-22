@@ -54,16 +54,16 @@ class ModulesController extends AdminBaseController {
      * @param Module $module
      * @return mixed
      */
-    public function disable(Module $module) {
-        if ($this->isCoreModule($module)) {
-            return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])
-                            ->with('error', trans('core::modules.module cannot be disabled'));
+    public function disable($mod) {
+        $module = \Module::find($mod);
+        if ($this->isCoreModule($mod)) {
+            flash()->error("Module <strong><u>" . $module->getName()
+                    . "</u></strong> is very important. We prevented you from disabling it. Sorry!");
+            return redirect()->route('system.modules.show', [$module->getLowerName()]);
         }
-
         $module->disable();
-
-        return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])
-                        ->with('success', trans('core::modules.module disabled'));
+        flash()->warning("Module <strong><u>" . $module->getName() . "</u></strong> now disabled");
+        return redirect()->route('system.modules.show', [$module->getLowerName()]);
     }
 
     /**
@@ -71,10 +71,11 @@ class ModulesController extends AdminBaseController {
      * @param Module $module
      * @return mixed
      */
-    public function enable(Module $module) {
+    public function enable($mod) {
+        $module = \Module::find($mod);
         $module->enable();
-
-        return redirect()->route('admin.workshop.modules.show', [$module->getLowerName()])->with('success', trans('core::modules.module enabled'));
+        flash()->success("Module <strong><u>" . $module->getName() . "</u></strong> now enabled.");
+        return redirect()->route('system.modules.show', [$module->getLowerName()]);
     }
 
     /**
@@ -93,9 +94,9 @@ class ModulesController extends AdminBaseController {
      * @param Module $module
      * @return bool
      */
-    private function isCoreModule(Module $module) {
-        $coreModules = array_flip(config('asgard.core.config.CoreModules'));
-        return isset($coreModules[$module->getLowerName()]);
+    private function isCoreModule($module) {
+        $important_modules = mconfig('core.config.core_modules');
+        return in_array($module, $important_modules);
     }
 
 }

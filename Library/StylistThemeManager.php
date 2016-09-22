@@ -11,6 +11,11 @@
  */
 
 namespace Ignite\Core\Library;
+use FloatingPoint\Stylist\Theme\Exceptions\ThemeNotFoundException;
+use FloatingPoint\Stylist\Theme\Json;
+use FloatingPoint\Stylist\Theme\Theme;
+use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Yaml\Parser;
 
 /**
  * Description of StylistThemeManager
@@ -68,6 +73,7 @@ class StylistThemeManager implements ThemeManager {
         $theme->type = ucfirst($themeJson->getJsonAttribute('type'));
         $theme->changelog = $this->getChangelog($directory);
         $theme->active = $this->getStatus($theme);
+        $theme->author=$themeJson->getJsonAttribute('author');
 
         return $theme;
     }
