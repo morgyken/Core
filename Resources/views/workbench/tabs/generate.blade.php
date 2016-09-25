@@ -25,7 +25,7 @@
             </div>
             <div class="checkbox">
                 <label for="subtree">
-                    <input id="subtree" name="subtree" type="checkbox" class="flat-blue" value="true" /> {{ trans('workshop::workbench.form.install as subtree') }}
+                    <input id="subtree" name="subtree" type="checkbox" class="flat-blue" value="true" /> Install as subtree
                 </label>
             </div>
         </div>

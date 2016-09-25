@@ -12,7 +12,14 @@
 
 namespace Ignite\Core\Http\Controllers;
 
+use Ignite\Core\Http\Requests\GenerateModuleRequest;
+use Ignite\Core\Http\Requests\InstallModuleRequest;
+use Ignite\Core\Http\Requests\MigrateModuleRequest;
+use Ignite\Core\Http\Requests\SeedModuleRequest;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\View;
+use Laracasts\Flash\Flash;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class WorkbenchController extends AdminBaseController {
 
@@ -34,10 +41,9 @@ class WorkbenchController extends AdminBaseController {
      * @return mixed
      */
     public function generate(GenerateModuleRequest $request) {
-        $output = new BufferedOutput();
-        Artisan::call('module:make', ['name' => $request->name], $output);
-        Flash::message($output->fetch());
-        return Redirect::route('admin.workshop.workbench.index');
+        Artisan::call('module:make', ['name' => [ $request->name]]);
+        Flash::message(Artisan::output());
+        return redirect()->route('system.workbench.index');
     }
 
     /**
@@ -49,7 +55,7 @@ class WorkbenchController extends AdminBaseController {
         $output = new BufferedOutput();
         Artisan::call('module:migrate', ['module' => $request->module], $output);
         Flash::message($output->fetch());
-        return Redirect::route('admin.workshop.workbench.index');
+        return redirect()->route('system.workbench.index');
     }
 
     /**
@@ -68,7 +74,7 @@ class WorkbenchController extends AdminBaseController {
 
         Flash::message($output->fetch());
 
-        return Redirect::route('admin.workshop.workbench.index');
+        return redirect()->route('system.workbench.index');
     }
 
     /**
@@ -82,7 +88,7 @@ class WorkbenchController extends AdminBaseController {
 
         Flash::message($output->fetch());
 
-        return Redirect::route('admin.workshop.workbench.index');
+        return redirect()->route('system.workbench.index');
     }
 
 }

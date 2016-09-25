@@ -23,6 +23,7 @@ class AdminBaseController extends Controller {
      * @var AssetManager
      */
     protected $assetManager;
+
     /**
      * @var AssetPipeline|\Illuminate\Foundation\Application|mixed
      */
@@ -40,7 +41,6 @@ class AdminBaseController extends Controller {
     public function __construct() {
         $this->assetManager = app(AssetManager::class);
         $this->assetPipeline = app(AssetPipeline::class);
-
         $this->addAssets();
         $this->requireDefaultAssets();
     }
@@ -51,7 +51,6 @@ class AdminBaseController extends Controller {
     private function addAssets() {
         $real_assets = mconfig('core.core.admin-assets');
         foreach ($real_assets as $assetName => $path) {
-
             if (key($path) == 'theme') {
                 $this->assetManager->addAsset($assetName, Theme::url($path['theme']));
             } else {

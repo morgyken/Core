@@ -1,14 +1,18 @@
 {
     "name": "collabmed/core",
     "description": "The core module for Collabmed Platform. This is required for every install.",
-    "authors": [
-        {
-            "name": "Samuel Dervis",
-            "email": "samueldervis@gmail.com"
-        }
-    ],
+    "license": "proprietary",
+    "type": "asgard-module",
+    "homepage": "http://www.collabmed.com",
+    "authors": {
+        "name": "Samuel Odhiambo Okoth",
+        "email": "sodhiambo@collabmed.com",
+        "role": "developer"
+    },
     "require": {
         "php": ">=5.6.4",
+        "ext-gd": "*",
+        "ext-zip": "*",
         "composer/installers": "~1.0",
         "laravelcollective/html": "5.3.*",
         "laracasts/flash": "^2.0",

@@ -14,7 +14,7 @@ namespace Ignite\Core\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class GeneralModuleRequest extends FormRequest {
+class GenerateModuleRequest extends FormRequest {
 
     /**
      * Get the validation rules that apply to the request.
