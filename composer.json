@@ -2,7 +2,7 @@
     "name": "collabmed/core",
     "description": "The core module for Collabmed Platform. This is required for every install.",
     "license": "proprietary",
-    "type": "dervis-module",
+    "type": "asgard-module",
     "homepage": "http://www.collabmed.com",
     "authors": [
         {
@@ -29,7 +29,4 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "extra": {
-        "installer-name": "Core"
-    }
 }
