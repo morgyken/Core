@@ -1,5 +1,5 @@
 {
-    "name": "collabmed/core",
+    "name": "collabmed/core-module",
     "description": "The core module for Collabmed Platform. This is required for every install.",
     "license": "proprietary",
     "type": "asgard-module",
@@ -27,6 +27,5 @@
             "Modules\\Core\\": ""
         }
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    "minimum-stability": "dev"
 }
