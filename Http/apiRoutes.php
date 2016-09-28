@@ -16,19 +16,6 @@ Route::group(['prefix' => 'api/core',
     'middleware' => mconfig('core.core.middleware.api'),
     'namespace' => $namespace,
     'as' => 'api.core.'], function () {
-    Route::post('/system/modules/{module}/publish', ['as' => 'module.publish', 'uses' => 'ApiController@publishModuleAssets']);
-    Route::post('/system/themes/{theme}/publish', ['as' => 'theme.publish', 'uses' => 'ApiController@publishThemeAssets']);
+    Route::post('system/modules/{module}/publish', ['as' => 'module.publish', 'uses' => 'ApiController@publishModuleAssets']);
+    Route::post('system/themes/{theme}/publish', ['as' => 'theme.publish', 'uses' => 'ApiController@publishThemeAssets']);
 });
-
-//temporal medias
-/**
-Route::group(['prefix' => 'users',
-    'middleware' => mconfig('core.core.middleware.api'),
-    'namespace' => $namespace,], function () {
-    Route::post('file', ['uses' => 'CoreController@store', 'as' => 'api.media.store']);
-    Route::post('media/link', ['uses' => 'CoreController@linkCore', 'as' => 'api.media.link']);
-    Route::post('media/unlink', ['uses' => 'CoreController@unlinkCore', 'as' => 'api.media.unlink']);
-    Route::get('media/all', ['uses' => 'CoreController@all', 'as' => 'api.media.all',]);
-    Route::post('media/sort', ['uses' => 'CoreController@sortCore', 'as' => 'api.media.sort']);
-});
-*/
