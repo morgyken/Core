@@ -3,6 +3,7 @@
     "description": "The core module for Collabmed Platform. This is required for every install.",
     "license": "proprietary",
     "type": "asgard-module",
+    "keywords": ["inventory", "collabmed", "samuel", "dervis", "core"],
     "homepage": "http://www.collabmed.com",
     "authors": [
         {
