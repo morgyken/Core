@@ -89,8 +89,10 @@ $routeName = $module->enabled() ? 'disable' : 'enable';
                 <dl class="dl-horizontal">
                     <dt>Name:</dt><dd>{{ $module->name }}</dd>
                     <dt>Description:</dt><dd>{{$module->description}}</dd>
-                    <dt>Author:</dt><dd>{{$module->author}}</dd>
-                    <dt>Email:</dt><dd><small><code>{{$module->email}}</code></small></dd>
+                    @foreach($module->author as $author)
+                    <dt>Author:</dt><dd>{{$author['name']}}</dd>
+                    <dt>Email:</dt><dd><small><code>{{$author['email']}}</code></small></dd>
+                    @endforeach
                     <dt>Version</dt><dd>{{ str_replace('v', '', $module->version) }}</dd>
                     <dt>Status</dt><dd>
                         <span class="label label-{{$module->enabled() ? 'success' : 'danger'}}">

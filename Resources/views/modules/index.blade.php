@@ -37,7 +37,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td><a href="{{ route('system.modules.show', [$module->getLowerName()]) }}">{{ $module->name }}</a></td>
                             <td>{{$module->description}}</td>
-                            <td>{{$module->author}}</td>
+                            <td>{{implode(' , ',array_column($module->author, 'name'))}}</td>
                             <td>{{ str_replace('v', '', $module->version) }}</td>
                             <td>
                                 <span class="label label-{{$module->enabled() ? 'success' : 'danger'}}">
