@@ -162,17 +162,6 @@ class Validation {
     }
 
     /**
-     * @return array Checkin Validation Rules
-     */
-    public static function validate_checkin() {
-        return [
-            "destination" => "required",
-            "purpose" => "required",
-            "payment_mode" => 'required',
-        ];
-    }
-
-    /**
      * @return array Patient Document Upload validations
      */
     public static function validate_patient_documents() {
