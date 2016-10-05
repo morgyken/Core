@@ -153,6 +153,7 @@ return [
             'main.js',
             'sisyphus.js',
             'jquery-ui.js',
+            'selectize.js'
         ],
     ],
 ];

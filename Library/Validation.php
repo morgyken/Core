@@ -126,29 +126,13 @@ class Validation {
         ];
     }
 
-    /**
-     * @return array Procedure Category Validation rules
-     */
-    public static function validate_procedure_category() {
-        return ["name" => "required|unique:procedure_categories,name", "applies_to" => "required"];
-    }
+
 
     public static function validate_schedule_category() {
         return ["name" => "required|unique:appointment_categories,name"];
     }
 
-    /**
-     * @return array Procedure Validation
-     */
-    public static function validate_procedures() {
-        return [
-            "name" => "required",
-            "code" => "required|unique:procedures,code",
-            "category" => "required",
-            "cash_charge" => "numeric",
-            "status" => "required",
-        ];
-    }
+
 
     /**
      *
