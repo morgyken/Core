@@ -9,13 +9,5 @@
  *
  * =============================================================================
  */
-$namespace = 'Ignite\Core\Http\Controllers';
-
-//back-end routes
-Route::group(['prefix' => 'api/core',
-    'middleware' => mconfig('core.core.middleware.api'),
-    'namespace' => $namespace,
-    'as' => 'api.core.'], function () {
-    Route::post('system/modules/{module}/publish', ['as' => 'module.publish', 'uses' => 'ApiController@publishModuleAssets']);
-    Route::post('system/themes/{theme}/publish', ['as' => 'theme.publish', 'uses' => 'ApiController@publishThemeAssets']);
-});
+$router->post('system/modules/{module}/publish', ['as' => 'module.publish', 'uses' => 'ApiController@publishModuleAssets']);
+$router->post('system/themes/{theme}/publish', ['as' => 'theme.publish', 'uses' => 'ApiController@publishThemeAssets']);

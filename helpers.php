@@ -234,3 +234,20 @@ if (!function_exists('is_module_enabled')) {
     }
 
 }
+if (!function_exists('m_asset')) {
+
+    /**
+     * Generate a nice asset path for modules
+     * @param $path
+     * @return string
+     */
+    function m_asset($path) {
+        $vars = explode(':', $path);
+        if (\Module::has($vars[0])) {
+            return asset('modules/' . implode('/', $vars));
+        }
+        //what if this does not exist?
+        return asset('modules/' . implode('/', $vars));
+    }
+
+}

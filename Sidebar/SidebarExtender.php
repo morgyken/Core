@@ -42,7 +42,7 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender {
         $menu->group('Dashboard', function (Group $group) {
             $group->item('Dashboard', function (Item $item) {
                 $item->icon('fa fa-dashboard');
-                $item->route('dashboard');
+                $item->route('system.dashboard');
             });
             $group->item('Sudo', function (Item $item) {
                 $item->icon('fa fa-code');

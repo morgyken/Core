@@ -9,15 +9,8 @@
  */ ?>
 @extends('layouts.app')
 
-@section('content-header')
-<h1 class="pull-left">Dashboard</h1>
-<div class="btn-group pull-right">
-    <a class="btn btn-default" id="edit-grid" data-mode="0" href="#">Edit</a>
-    <a class="btn btn-default" id="reset-grid" href="{{ route('dashboard.grid.reset')  }}">Reset</a>
-    <a class="btn btn-default hidden" id="add-widget" data-toggle="modal" data-target="#myModal">Add Widget</a>
-</div>
-<div class="clearfix"></div>
-@stop
+@section('content_title','Dashboard')
+@section('content_description','Quick glance on system')
 
 @section('styles')
 <style>
@@ -28,7 +21,13 @@
 @stop
 
 @section('content')
-
+<div class="row">
+    <div class="btn-group pull-right">
+        <a class="btn btn-default" id="edit-grid" data-mode="0" href="#">Edit</a>
+        <a class="btn btn-default" id="reset-grid" href="{{ route('system.dashboard.grid.reset')  }}">Reset</a>
+        <a class="btn btn-default hidden" id="add-widget" data-toggle="modal" data-target="#myModal">Add Widget</a>
+    </div>
+    <div class="clearfix"></div></div>
 <div class="row">
     <div class="col-md-12">
         <div class="grid-stack">
@@ -91,7 +90,7 @@
     }, this);
     $.ajax({
     type: 'POST',
-            url: '{{ route('dashboard.grid.save') }}',
+            url: "{{ route('system.dashboard.grid.save') }}",
             data: {
             _token: '<?= csrf_token() ?>',
                     grid: JSON.stringify(this.serialized_data)

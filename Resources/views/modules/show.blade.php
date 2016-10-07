@@ -115,7 +115,7 @@ $routeName = $module->enabled() ? 'disable' : 'enable';
             $self.find('i').toggleClass('fa-cloud-upload fa-refresh fa-spin');
             $.ajax({
                 type: 'POST',
-                url: '{{ route('api.core.module.publish', [$module->getName()]) }}',
+                url: '{{ route('api.system.module.publish', [$module->getName()]) }}',
                 data: {_token: '{{ csrf_token() }}'},
                 success: function () {
                     $self.find('i').toggleClass('fa-cloud-upload fa-refresh fa-spin');

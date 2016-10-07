@@ -70,11 +70,11 @@ class DashboardController extends AdminBaseController {
 
         if (!$widget) {
             flash()->warning('Dashboard reset not needed');
-            return redirect()->route('dashboard');
+            return redirect()->route('system.dashboard');
         }
         $this->widget->destroy($widget);
-        flash('Dashboard has been reset');
-        return redirect()->route('dashboard');
+        flash('Dashboard has been reset', 'success');
+        return redirect()->route('system.dashboard');
     }
 
     /**
