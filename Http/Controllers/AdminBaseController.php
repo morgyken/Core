@@ -54,7 +54,7 @@ class AdminBaseController extends Controller {
             if (key($path) == 'theme') {
                 $this->assetManager->addAsset($assetName, Theme::url($path['theme']));
             } else {
-                $this->assetManager->addAsset($assetName, \Module::asset($path['module']));
+                $this->assetManager->addAsset($assetName, m_asset($path['module']));
             }
         }
     }
