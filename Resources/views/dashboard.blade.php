@@ -1,4 +1,5 @@
-<?php /*
+<?php
+/*
  * =============================================================================
  *
  * Collabmed Solutions Ltd
@@ -6,11 +7,12 @@
  * Author: Samuel Okoth <sodhiambo@collabmed.com>
  *
  * =============================================================================
- */ ?>
+ */
+?>
 @extends('layouts.app')
 
 @section('content_title','Dashboard')
-@section('content_description','Quick glance on system')
+@section('content_description','Quick glance at system')
 
 @section('styles')
 <style>
@@ -21,13 +23,16 @@
 @stop
 
 @section('content')
+<!--
 <div class="row">
     <div class="btn-group pull-right">
-        <a class="btn btn-default" id="edit-grid" data-mode="0" href="#">Edit</a>
+        <a class="btn btn-default" id="edit-grid" data-mode="0" href="#"> Edit</a>
         <a class="btn btn-default" id="reset-grid" href="{{ route('system.dashboard.grid.reset')  }}">Reset</a>
         <a class="btn btn-default hidden" id="add-widget" data-toggle="modal" data-target="#myModal">Add Widget</a>
     </div>
-    <div class="clearfix"></div></div>
+    <div class="clearfix"></div>
+</div>
+-->
 <div class="row">
     <div class="col-md-12">
         <div class="grid-stack">
@@ -41,7 +46,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{ trans('dashboard::dashboard.add widget to dashboard') }}</h4>
+                <h4 class="modal-title" id="myModalLabel">Add widget to dashboard</h4>
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -56,6 +61,10 @@
 @parent
 <script type="text/javascript">
     $(document).ready(function () {
+    //size function for gridstack
+    $.fn.size = function(){
+    return this.length;
+    };
     var options = {
     vertical_margin: 10,
             float: true,
@@ -66,7 +75,6 @@
     new function () {
     this.defaultWidgets = {!! json_encode($widgets) !!};
     this.serialized_data = {!! $customWidgets !== 'null' ? $customWidgets : json_encode($widgets) !!};
-    //console.log(this.defaultWidgets.PostsWidget);
     this.grid = jQuery('.grid-stack').data('gridstack');
     this.load_grid = function () {
     this.grid.remove_all();
@@ -114,7 +122,7 @@
     this.grid.resizable(el, true);
     }.bind(this));
     }, this);
-    jQuery('#edit-grid').data('mode', 1).text('{{ trans('dashboard::dashboard.save grid') }}');
+    jQuery('#edit-grid').data('mode', 1).text('Save grid');
     } else {
     // disable all the grid editing
     _.map(jQuery('.grid-stack > .grid-stack-item:visible'), function (el) {
@@ -122,7 +130,7 @@
     this.grid.resizable(el, false);
     jQuery(el).off('dblclick');
     }, this);
-    jQuery('#edit-grid').data('mode', 0).text('{{ trans('dashboard::dashboard.edit grid') }}');
+    jQuery('#edit-grid').data('mode', 0).text('Edit grid');
     // run the save mech
     this.save_grid();
     }

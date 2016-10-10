@@ -11,6 +11,7 @@
  */
 
 namespace Ignite\Core\Library;
+
 use Ignite\Core\Composers\DashboardWidgetViewComposer;
 use Illuminate\Contracts\View\Factory as ViewFactory;
 

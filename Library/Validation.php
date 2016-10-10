@@ -14,25 +14,10 @@ namespace Ignite\Core\Library;
 
 /**
  * Description of Validation
- *
+ * @depreciated Use the request for modules
  * @author Samuel Dervis <samueldervis@gmail.com>
  */
 class Validation {
-
-    /**
-     * Ward Validation
-     * @return array The validation rules
-     */
-    public static function validate_wards() {
-        return [
-            "clinic_id" => "required",
-            "name" => "required",
-            "type" => "required",
-            "gender" => "required",
-            "age_group" => "required",
-            "cost" => "required|numeric"
-        ];
-    }
 
     /**
      * @return array Patient Scheduling Validation
@@ -125,14 +110,6 @@ class Validation {
             "code" => ""
         ];
     }
-
-
-
-    public static function validate_schedule_category() {
-        return ["name" => "required|unique:appointment_categories,name"];
-    }
-
-
 
     /**
      *
