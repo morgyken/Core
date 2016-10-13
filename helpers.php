@@ -21,6 +21,15 @@ if (!function_exists('mconfig')) {
     }
 
 }
+if (!function_exists('m_setting')) {
+
+    function m_setting($param) {
+        $arguments = explode('.', $param);
+        $should_get = \Setting::get(implode('::', $arguments));
+        return !empty($should_get) ? $should_get : null;
+    }
+
+}
 if (!function_exists('smart_date')) {
 
     /**
