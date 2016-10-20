@@ -46,6 +46,7 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender {
             });
             $group->item('Sudo', function (Item $item) {
                 $item->icon('fa fa-code');
+                $item->authorize($this->auth->isSudo());
 
                 $item->item('Modules', function (Item $item) {
                     $item->icon('fa fa-puzzle-piece');

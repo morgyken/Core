@@ -97,4 +97,9 @@ interface Authentication {
      * @return int
      */
     public function id();
+
+    /**
+     * Make sure only sudo can access some resources
+     */
+    public function isSudo();
 }
