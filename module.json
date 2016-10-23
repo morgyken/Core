@@ -19,12 +19,14 @@
         "Laracasts\\Flash\\FlashServiceProvider",
         "FloatingPoint\\Stylist\\StylistServiceProvider",
         "Maatwebsite\\Sidebar\\SidebarServiceProvider",
-        "Jenssegers\\Date\\DateServiceProvider"
+        "Jenssegers\\Date\\DateServiceProvider",
+        "Barryvdh\\DomPDF\\ServiceProvider"
     ],
     "aliases": {
         "Form": "Collective\\Html\\FormFacade",
         "Flash": "Laracasts\\Flash\\Flash",
-        "Date": "Jenssegers\\Date\\Date"
+        "Date": "Jenssegers\\Date\\Date",
+        "PDF": "Barryvdh\\DomPDF\\Facade"
     },
     "files": [
         "helpers.php",
