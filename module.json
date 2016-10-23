@@ -14,6 +14,7 @@
         "Ignite\\Core\\Providers\\DashboardServiceProvider",
         "Ignite\\Core\\Providers\\WidgetServiceProvider",
         "Ignite\\Core\\Providers\\RouteServiceProvider",
+        "Ignite\\Core\\Providers\\SchedulerServiceProvider",
         "Collective\\Html\\HtmlServiceProvider",
         "Laracasts\\Flash\\FlashServiceProvider",
         "FloatingPoint\\Stylist\\StylistServiceProvider",

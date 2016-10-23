@@ -77,13 +77,13 @@ class InstallCommand extends Command {
                     ProtectInstaller::class,
                     // ConfigureDatabase::class,
                     SetAppKey::class,
+                    HouseKeeping::class,
                     ModuleMigrator::class,
                     ModuleSeeders::class,
                     ModuleAssets::class,
                     ThemeAssets::class,
                     //UnignoreComposerLock::class,
                     ConfigureUserProvider::class,
-                    HouseKeeping::class,
                 ])->install($this);
 
         if ($success) {

@@ -11,7 +11,9 @@
  */
 //homepage
 
-$router->group(['prefix' => 'dashboard',], function (\Illuminate\Routing\Router $router) {
+use Illuminate\Routing\Router;
+
+$router->group(['prefix' => 'dashboard',], function (Router $router) {
     $router->get('/', ['as' => 'dashboard', 'uses' => 'DashboardController@index',]);
     $router->post('grid', ['as' => 'dashboard.grid.save', 'uses' => 'DashboardController@save']);
     $router->get('grid', ['as' => 'dashboard.grid.reset', 'uses' => 'DashboardController@reset']);

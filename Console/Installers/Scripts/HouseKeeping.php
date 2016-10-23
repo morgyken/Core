@@ -29,7 +29,7 @@ class HouseKeeping implements SetupScript {
      */
     public function fire(Command $command) {
 
-        $command->blockMessage('Housekeeping', 'Finishing up ...', 'comment');
+        $command->blockMessage('Preparing', 'Preparing application ...', 'comment');
         $command->call('migrate', ['--seed' => true]);
         // $command->callSilent('module:update');
         //$command->call('ide-helper:models');
