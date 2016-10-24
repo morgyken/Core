@@ -71,7 +71,8 @@ return [
         'icheck.css' => ['theme' => 'vendor/iCheck/skins/all.css'],
         'AdminLTE.css' => ['theme' => 'vendor/admin-lte/dist/css/AdminLTE.css'],
         'AdminLTE.all.skins.css' => ['theme' => 'vendor/admin-lte/dist/css/skins/_all-skins.min.css'],
-        'asgard.css' => ['theme' => 'css/asgard.css'],
+        'asgard.css' => ['theme' => 'css/asgard.min.css'],
+        'custom.css' => ['theme' => 'css/custom.min.css'],
         'select2.css' => ['theme' => 'plugins/select2/select2.min.css'],
         'select2-bs.css' => ['theme' => 'plugins/select2/select2-bootstrap.min.css'],
         //'gridstack.css' => ['module' => 'core:vendor/gridstack/dist/gridstack.min.css'],
@@ -135,6 +136,7 @@ return [
             'select2.css',
             'select2-bs.css',
             'jquery-ui.css',
+            'custom.css'
         ],
         'js' => [
             'bootstrap.js',
