@@ -25,7 +25,8 @@
         "floatingpoint/stylist": "^0.4.0",
         "maatwebsite/laravel-sidebar": "^2.1",
         "intervention/image": "^2.3",
-        "jenssegers/date": "^3.2"
+        "jenssegers/date": "^3.2",
+        "barryvdh/laravel-dompdf": "^0.7.0"
     },
     "suggest": {
         "collabmed/notification-module": "Allows notifications to be sent to the user. Optionally real-time notifications."
