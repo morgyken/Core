@@ -42,6 +42,7 @@ class DashboardController extends AdminBaseController {
         if ($widget) {
             $customWidgets = $widget->widgets;
         }
+        return view('core::native', ['data' => $customWidgets]);
         return view('dashboard::dashboard', compact('customWidgets'));
     }
 

@@ -22,6 +22,9 @@
         "Jenssegers\\Date\\DateServiceProvider",
         "Barryvdh\\DomPDF\\ServiceProvider"
     ],
+    "widgets": [
+        "Ignite\\Core\\Widgets\\GraphWidget"
+    ],
     "aliases": {
         "Form": "Collective\\Html\\FormFacade",
         "Flash": "Laracasts\\Flash\\Flash",
