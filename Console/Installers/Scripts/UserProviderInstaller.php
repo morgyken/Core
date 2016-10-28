@@ -13,8 +13,8 @@
 namespace Ignite\Core\Console\Installers\Scripts;
 
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
-use Ignite\Core\Entities\UserProfile;
-use Ignite\Core\Repositories\UserRepository;
+use Ignite\Users\Entities\UserProfile;
+use Ignite\Users\Repositories\UserRepository;
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Filesystem\Filesystem;
