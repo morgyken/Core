@@ -9,6 +9,7 @@
  *
  * =============================================================================
  */
+
 use Ignite\Core\Library\DervisNotification;
 
 if (!function_exists('mconfig')) {
@@ -274,7 +275,7 @@ if (!function_exists('send_notification')) {
      */
     function send_notification($user, $title, $message, $link = null, $icon = 'info') {
         $service = resolve(DervisNotification::class);
-        $service->to($user)->push($title, $message, $icon, route($link));
+        $service->to($user)->push($title, $message, $icon, empty($link) ? null : route($link));
     }
 
 }

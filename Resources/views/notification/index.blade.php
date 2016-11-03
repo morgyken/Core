@@ -31,12 +31,12 @@
             <!-- /.box-header -->
             <div class="box-body">
                 @if(!$notifications->isEmpty())
-                <table class="data-table table table-bordered table-hover">
+                <table class="data-table table table-bordered table-condensed table-hover">
                     <thead>
                         <tr>
-                            <th>Time</th>
                             <th>Title</th>
                             <th>Message</th>
+                            <th>Time</th>
                             <th>Read</th>
                             <th width="10%" data-sortable="false">Actions</th>
                         </tr>
@@ -44,29 +44,16 @@
                     <tbody>
                         @foreach ($notifications as $notification)
                         <tr>
-                            <td>
-                                <a href="{{ $notification->link }}">
-                                    {{ $notification->time_ago }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ $notification->link }}">
-                                    {{ $notification->title }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ $notification->link }}">
-                                    {{ $notification->message }}
-                                </a>
-                            </td>
-                            <td>
-                                <a href="{{ $notification->link }}">
-                                    {{ $notification->is_read ? 'Read' : 'Un read' }}
-                                </a>
-                            </td>
+                            <td>{{$notification->time_ago }}</td>
+                            <td>{{ $notification->title }} </td>
+                            <td>{{ $notification->message }}</td>
+                            <td>{{ $notification->is_read ? 'Read' : 'Un read' }}</td>
                             <td>
                                 <div class="btn-group">
-                                    <button class="btn btn-danger btn-flat" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('notification.delete', [$notification->id]) }}"><i class="fa fa-trash"></i></button>
+                                    <a href="{{$notification->link}}" class="btn btn-xs btn-primary">
+                                        <i class="fa fa-link"></i>
+                                    </a>
+                                    <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal-delete-confirmation" data-action-target="{{ route('system.notification.delete', [$notification->id]) }}"><i class="fa fa-trash"></i></button>
                                 </div>
                             </td>
                         </tr>

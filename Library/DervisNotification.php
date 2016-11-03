@@ -59,7 +59,7 @@ final class DervisNotification implements NotificationService {
             'title' => $title,
             'message' => $message,
         ]);
-        if (\Setting::get('messaging:real-time')) {
+        if (m_setting('messaging.real-time')) {
             $this->triggerEventFor($notification);
         }
     }

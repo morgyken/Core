@@ -21,7 +21,8 @@
         "FloatingPoint\\Stylist\\StylistServiceProvider",
         "Maatwebsite\\Sidebar\\SidebarServiceProvider",
         "Jenssegers\\Date\\DateServiceProvider",
-        "Barryvdh\\DomPDF\\ServiceProvider"
+        "Barryvdh\\DomPDF\\ServiceProvider",
+        "Spatie\\Backup\\BackupServiceProvider"
     ],
     "widgets": [
         "Ignite\\Core\\Widgets\\GraphWidget"

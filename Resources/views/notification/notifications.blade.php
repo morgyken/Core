@@ -10,7 +10,7 @@
                     @if($notifications->count() === 0)
                     <li class="noNotifications">
                         <a href="#">
-                            No notifications for you.
+                            No new notifications for you.
                         </a>
                     </li>
                     @endif

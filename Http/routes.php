@@ -44,4 +44,7 @@ $router->group(['prefix' => 'notification', 'as' => 'notification.'], function (
     $router->get('mark-all-read', ['as' => 'mark-all-read', 'uses' => 'NotificationsController@markAllAsRead']);
     $router->delete('delete-all', ['as' => 'delete-all', 'uses' => 'NotificationsController@destroyAll']);
     $router->delete('delete/{notification}', ['as' => 'delete', 'uses' => 'NotificationsController@destroy']);
+    $router->get('test', function() {
+        send_notification(1, 'sampl', 'Test notification');
+    });
 });

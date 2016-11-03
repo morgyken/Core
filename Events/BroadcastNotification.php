@@ -2,7 +2,7 @@
 
 namespace Ignite\Core\Events;
 
-use Ignite\Messaging\Entities\Notification;
+use Ignite\Core\Entities\Notification;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\SerializesModels;
