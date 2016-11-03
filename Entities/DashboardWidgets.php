@@ -19,7 +19,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\DashboardWidgets whereUpdatedAt($value)
  * @mixin \Eloquent
  */
-class DashboardWidgets extends Model
-{
+class DashboardWidgets extends Model {
+
     protected $fillable = [];
+    public $table = 'core_dashboard_widgets';
+
 }

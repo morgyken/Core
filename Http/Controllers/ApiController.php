@@ -12,11 +12,21 @@
 
 namespace Ignite\Core\Http\Controllers;
 
+use Ignite\Core\Repositories\NotificationRepository;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Artisan;
 use InvalidArgumentException;
 
 class ApiController extends Controller {
+
+    /**
+     * @var NotificationRepository
+     */
+    private $notification;
+
+    public function __construct(NotificationRepository $notification) {
+        $this->notification = $notification;
+    }
 
     /**
      * @param $module
@@ -44,6 +54,11 @@ class ApiController extends Controller {
             $results = false;
         }
         return ['result' => $results];
+    }
+
+    public function markAsRead(Request $request) {
+        $updated = $this->notification->markNotificationAsRead($request->get('id'));
+        return response()->json(compact('updated'));
     }
 
 }

@@ -11,12 +11,12 @@ class CreateWidgetsTable extends Migration {
      * @return void
      */
     public function up() {
-        Schema::create('dashboard_widgets', function(Blueprint $table) {
+        Schema::create('core_dashboard_widgets', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->text('widgets');
             $table->timestamps();
-            //  $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            //
         });
     }
 
@@ -26,7 +26,7 @@ class CreateWidgetsTable extends Migration {
      * @return void
      */
     public function down() {
-        Schema::drop('dashboard_widgets');
+        Schema::drop('core_dashboard_widgets');
     }
 
 }

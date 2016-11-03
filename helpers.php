@@ -9,6 +9,8 @@
  *
  * =============================================================================
  */
+use Ignite\Core\Library\DervisNotification;
+
 if (!function_exists('mconfig')) {
 
     /**
@@ -257,6 +259,22 @@ if (!function_exists('m_asset')) {
         }
         //what if this does not exist?
         return asset('modules/' . implode('/', $vars));
+    }
+
+}
+
+if (!function_exists('send_notification')) {
+
+    /**
+     * @param $user The user id
+     * @param $title The message title
+     * @param $message The message content
+     * @param null $link The resource link
+     * @param null $icon THe object icon
+     */
+    function send_notification($user, $title, $message, $link = null, $icon = 'info') {
+        $service = resolve(DervisNotification::class);
+        $service->to($user)->push($title, $message, $icon, route($link));
     }
 
 }

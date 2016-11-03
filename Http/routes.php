@@ -9,6 +9,7 @@
  *
  * =============================================================================
  */
+
 //homepage
 
 use Illuminate\Routing\Router;
@@ -36,3 +37,11 @@ $router->post('migrate', ['as' => 'workbench.migrate', 'uses' => 'WorkbenchContr
 $router->post('install', ['as' => 'workbench.install', 'uses' => 'WorkbenchController@install']);
 $router->post('seed', ['as' => 'workbench.seed', 'uses' => 'WorkbenchController@seed']);
 
+
+//notifications
+$router->group(['prefix' => 'notification', 'as' => 'notification.'], function (Illuminate\Routing\Router $router) {
+    $router->get('/', ['as' => 'index', 'uses' => 'NotificationsController@index']);
+    $router->get('mark-all-read', ['as' => 'mark-all-read', 'uses' => 'NotificationsController@markAllAsRead']);
+    $router->delete('delete-all', ['as' => 'delete-all', 'uses' => 'NotificationsController@destroyAll']);
+    $router->delete('delete/{notification}', ['as' => 'delete', 'uses' => 'NotificationsController@destroy']);
+});
