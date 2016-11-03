@@ -38,19 +38,19 @@ class NotificationsController extends AdminBaseController {
      */
     public function destroy(Notification $notification) {
         $this->notification->destroy($notification);
-        flash(trans('Notification deleted', ['name' => 'Notification']));
+        flash()->success('Notification deleted');
         return redirect()->route('system.notification.index');
     }
 
     public function destroyAll() {
         $this->notification->deleteAllForUser($this->auth->check()->id);
-        flash('All  notifications deleted');
+        flash()->warning('All  notifications deleted');
         return redirect()->route('system.notification.index');
     }
 
     public function markAllAsRead() {
         $this->notification->markAllAsReadForUser($this->auth->check()->id);
-        flash('All notifications marked as read');
+        flash()->success('All notifications marked as read');
         return redirect()->route('system.notification.index');
     }
 

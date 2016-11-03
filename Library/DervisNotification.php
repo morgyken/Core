@@ -13,9 +13,9 @@
 namespace Ignite\Core\Library;
 
 use Ignite\Core\Contracts\Authentication;
-use Ignite\Messaging\Entities\Notification;
-use Ignite\Messaging\Events\BroadcastNotification;
-use Ignite\Messaging\Repositories\NotificationRepository;
+use Ignite\Core\Entities\Notification;
+use Ignite\Core\Events\BroadcastNotification;
+use Ignite\Core\Repositories\NotificationRepository;
 
 /**
  * Description of DervisNotification

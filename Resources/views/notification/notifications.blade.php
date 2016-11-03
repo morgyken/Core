@@ -1,7 +1,7 @@
 <li class="dropdown messages-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
         <i class="fa fa-bell-o"></i>
-        <span class="label label-success notificationsCounter animated infinite bounce">{{ $notifications->count() }}</span>
+        <span class="label label-success notificationsCounter animated ">{{ $notifications->count() }}</span>
     </a>
     <ul class="dropdown-menu">
         <li>
