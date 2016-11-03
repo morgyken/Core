@@ -18,4 +18,9 @@ return[
         'description' => 'Description',
         'view' => 'textarea',
     ],
+    'real-time' => [
+        'description' => 'Real Time Notifications',
+        'view' => 'checkbox',
+        'hint' => 'Send push notifications in real time?'
+    ],
 ];
