@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property integer $id
  * @property integer $user_id
- * @property integer $group
  * @property string $type
  * @property string $icon_class
  * @property string $link
@@ -23,7 +22,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read mixed $time_ago
  * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereUserId($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereGroup($value)
  * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereType($value)
  * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereIconClass($value)
  * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereLink($value)

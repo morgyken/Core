@@ -28,7 +28,7 @@ class ThemeAssets {
      */
     public function fire(Command $command) {
         $command->blockMessage('Themes', 'Publishing theme assets ...', 'comment');
-        $command->option('verbose');
+        $command->call('stylist:publish');
     }
 
 }
