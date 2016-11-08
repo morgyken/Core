@@ -19,8 +19,8 @@ if (!function_exists('mconfig')) {
      * @param $params
      * @return mixed
      */
-    function mconfig($params) {
-        return config('ignite.' . $params);
+    function mconfig($params, $default = null) {
+        return config('ignite.' . $params, $default);
     }
 
 }
