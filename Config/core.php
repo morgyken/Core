@@ -67,7 +67,7 @@ return [
         'font-awesome.css' => ['theme' => 'vendor/font-awesome/css/font-awesome.min.css'],
         'alertify.core.css' => ['theme' => 'css/vendor/alertify/alertify.core.css'],
         'alertify.default.css' => ['theme' => 'css/vendor/alertify/alertify.default.css'],
-        'dataTables.bootstrap.css' => ['theme' => 'vendor/datatables.net-bs/css/dataTables.bootstrap.min.css'],
+        //'dataTables.bootstrap.css' => ['theme' => 'vendor/datatables.net-bs/css/dataTables.bootstrap.min.css'],
         'icheck.css' => ['theme' => 'vendor/iCheck/skins/all.css'],
         'AdminLTE.css' => ['theme' => 'vendor/admin-lte/dist/css/AdminLTE.css'],
         'AdminLTE.all.skins.css' => ['theme' => 'vendor/admin-lte/dist/css/skins/_all-skins.min.css'],
@@ -82,6 +82,7 @@ return [
         'selectize-default.css' => ['module' => 'core:vendor/selectize/dist/css/selectize.default.css'],
         'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
         'pace.css' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.css'],
+        'datatables.css' => ['theme' => 'vendor/DataTables/datatables.min.css'],
         // Javascript
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
@@ -113,6 +114,7 @@ return [
         'chart.js' => ['theme' => 'vendor/admin-lte/plugins/chartjs/Chart.js'],
         'pace.js' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.js'],
         'moment.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/moment.min.js'],
+        'datatables.js' => ['theme' => 'vendor/DataTables/datatables.min.js'],
     ],
     /*
       |--------------------------------------------------------------------------
@@ -126,7 +128,7 @@ return [
             'font-awesome.css',
             'alertify.core.css',
             'alertify.default.css',
-            'dataTables.bootstrap.css',
+            //'dataTables.bootstrap.css',
             'icheck.css',
             'AdminLTE.css',
             'AdminLTE.all.skins.css',
@@ -136,6 +138,7 @@ return [
             'select2.css',
             'select2-bs.css',
             'jquery-ui.css',
+            'datatables.css',
             'custom.css'
         ],
         'js' => [
@@ -143,8 +146,8 @@ return [
             'mousetrap.js',
             'alertify.js',
             'icheck.js',
-            'jquery.dataTables.js',
-            'dataTables.bootstrap.js',
+            //  'jquery.dataTables.js',
+            // 'dataTables.bootstrap.js',
             'jquery.slug.js',
             //  'jquery-ui.js',
             'select2.js',
@@ -157,6 +160,7 @@ return [
             'jquery-ui.js',
             'selectize.js',
             'ckeditor.js',
+            'datatables.js'
         ],
     ],
 ];
