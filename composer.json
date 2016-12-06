@@ -30,7 +30,8 @@
         "barryvdh/laravel-dompdf": "^0.7.0",
         "spatie/laravel-backup": "^4.1",
         "predis/predis": "^1.1",
-        "phpoffice/phpword": "v0.13.*"
+        "phpoffice/phpword": "v0.13.*",
+        "collabmed/analytics-module": "dev-master"
     },
     "autoload": {
         "psr-4": {
