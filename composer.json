@@ -32,9 +32,6 @@
         "predis/predis": "^1.1",
         "phpoffice/phpword": "v0.13.*"
     },
-    "suggest": {
-        "collabmed/notification-module": "Allows notifications to be sent to the user. Optionally real-time notifications."
-    },
     "autoload": {
         "psr-4": {
             "Modules\\Core\\": ""
