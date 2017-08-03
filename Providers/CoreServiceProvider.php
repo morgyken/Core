@@ -15,6 +15,7 @@ namespace Ignite\Core\Providers;
 use Config;
 use Ignite\Core\Console\ModuleScaffoldCommand;
 use Ignite\Core\Console\PublishModuleAssetsCommand;
+use Ignite\Core\Console\RunSync;
 use Ignite\Core\Console\ThemeScaffoldCommand;
 use Ignite\Core\Console\UpdateModuleCommmand;
 use Illuminate\Support\Facades\Schema;
@@ -23,7 +24,8 @@ use Ignite\Core\Console\InstallCommand;
 use Ignite\Core\Console\PublishThemeAssetsCommand;
 use Ignite\Core\Foundation\Theme\ThemeManager;
 
-class CoreServiceProvider extends ServiceProvider {
+class CoreServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -55,7 +57,8 @@ class CoreServiceProvider extends ServiceProvider {
      * Boot the application events.
      *
      */
-    public function boot() {
+    public function boot()
+    {
         $this->registerMiddlewares();
         $this->registerTranslations();
         $this->registerConfig();
@@ -67,7 +70,8 @@ class CoreServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         $this->app->singleton('system.isInstalled', function ($app) {
             $envFileLocation = "{$app->environmentPath()}/{$app->environmentFile()}";
             try {
@@ -89,12 +93,13 @@ class CoreServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    protected function registerConfig() {
+    protected function registerConfig()
+    {
         $this->publishes([
             __DIR__ . '/../Config/config.php' => config_path('core.php'),
         ]);
         $this->mergeConfigFrom(
-                __DIR__ . '/../Config/config.php', 'core'
+            __DIR__ . '/../Config/config.php', 'core'
         );
     }
 
@@ -103,7 +108,8 @@ class CoreServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function registerViews() {
+    public function registerViews()
+    {
         $viewPath = base_path('resources/views/modules/core');
 
         $sourcePath = __DIR__ . '/../Resources/views';
@@ -113,8 +119,8 @@ class CoreServiceProvider extends ServiceProvider {
         ]);
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-                            return $path . '/modules/core';
-                        }, Config::get('view.paths')), [$sourcePath]), 'core');
+            return $path . '/modules/core';
+        }, Config::get('view.paths')), [$sourcePath]), 'core');
     }
 
     /**
@@ -122,7 +128,8 @@ class CoreServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function registerTranslations() {
+    public function registerTranslations()
+    {
         $langPath = base_path('resources/lang/modules/core');
 
         if (is_dir($langPath)) {
@@ -135,7 +142,8 @@ class CoreServiceProvider extends ServiceProvider {
     /**
      * Register the console commands
      */
-    private function registerCommands() {
+    private function registerCommands()
+    {
         $this->commands([
             InstallCommand::class,
             PublishThemeAssetsCommand::class,
@@ -143,6 +151,7 @@ class CoreServiceProvider extends ServiceProvider {
             UpdateModuleCommmand::class,
             ModuleScaffoldCommand::class,
             ThemeScaffoldCommand::class,
+            RunSync::class,
         ]);
     }
 
@@ -151,11 +160,13 @@ class CoreServiceProvider extends ServiceProvider {
      *
      * @return array
      */
-    public function provides() {
+    public function provides()
+    {
         return [];
     }
 
-    private function registerMiddlewares() {
+    private function registerMiddlewares()
+    {
         foreach ($this->middleware as $module => $middlewares) {
             foreach ($middlewares as $name => $middleware) {
                 $class = "Ignite\\{$module}\\Http\\Middleware\\{$middleware}";
@@ -164,7 +175,8 @@ class CoreServiceProvider extends ServiceProvider {
         }
     }
 
-    private function registerModuleResourceNamespaces() {
+    private function registerModuleResourceNamespaces()
+    {
         foreach ($this->app['modules']->getOrdered() as $module) {
             $this->registerViewNamespace($module);
             $this->registerConfigNamespace($module);
@@ -175,9 +187,10 @@ class CoreServiceProvider extends ServiceProvider {
      * Register the view namespaces for the modules
      * @param Module $module
      */
-    protected function registerViewNamespace($module) {
+    protected function registerViewNamespace($module)
+    {
         $this->app['view']->addNamespace(
-                $module->getName(), $module->getPath() . '/Resources/views'
+            $module->getName(), $module->getPath() . '/Resources/views'
         );
     }
 
@@ -185,7 +198,8 @@ class CoreServiceProvider extends ServiceProvider {
      * Register the config namespace
      * @param Module $module
      */
-    private function registerConfigNamespace($module) {
+    private function registerConfigNamespace($module)
+    {
         $files = $this->app['files']->files($module->getPath() . '/Config');
 
         $package = $module->getLowerName();
@@ -204,7 +218,8 @@ class CoreServiceProvider extends ServiceProvider {
      * @param $package
      * @return string
      */
-    private function getConfigFilename($file, $package) {
+    private function getConfigFilename($file, $package)
+    {
         $name = preg_replace('/\\.[^.\\s]{3,4}$/', '', basename($file));
 
         $filename = $this->prefix . '.' . $package . '.' . $name;
@@ -212,7 +227,8 @@ class CoreServiceProvider extends ServiceProvider {
         return $filename;
     }
 
-    private function registerServices() {
+    private function registerServices()
+    {
         $this->app->singleton(ThemeManager::class, function ($app) {
             $path = mconfig('core.core.themes_path');
             //$path = $app['config']->get('asgard.core.core.themes_path');
