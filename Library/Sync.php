@@ -122,14 +122,12 @@ class Sync
     public function importSql()
     {
         $filename = env('DB_DATABASE') . '.sql';
-        $path = '/var/www/backups/' . $this->folder . '/' . $filename;
+        $path = '/var/www/backups/' . $this->folder . $filename;
         $this->console->info('File path ==> ' . $path);
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . " < $path";
         $this->console->info('Command ==> ' . $command_string);
         \exec($command_string);
         return true;
-        //$time = new \Date();
-        //  \Slack::to('#notifications')->send('Database update sucessfull for Dr. Mughal ' . url('/') . ' at ' . $time); //->withIcon(':+1:');
     }
 
     public function runSync($type = 'local')
