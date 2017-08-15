@@ -112,6 +112,8 @@ class Sync
         if (!$this->last_database_dump()) {
             return false;
         }
+        $this->console->info("File path: ==> " . $this->the_file);
+        $this->console->info("Storage path on server: ==> " . $ll);
         return $this->filesystem->put($ll, Storage::get($this->the_file));
     }
 
@@ -123,7 +125,7 @@ class Sync
     {
         $filename = env('DB_DATABASE') . '.sql';
         $path = '/var/www/backups/' . $this->folder . $filename;
-        $this->console->info('File path ==> ' . $path);
+        $this->console->info('File path: ==> ' . $path);
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . " < $path";
         $this->console->info('Command ==> ' . $command_string);
         \exec($command_string);
