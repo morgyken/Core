@@ -10,26 +10,26 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $user_id
- * @property string $type
+ * @property string|null $type
  * @property string $icon_class
- * @property string $link
+ * @property string|null $link
  * @property string $title
  * @property string $message
- * @property bool $is_read
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property int $is_read
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
  * @property-read string $time_ago
  * @property-read \Ignite\Users\Entities\User $user
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereCreatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereIconClass($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereIsRead($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereLink($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereMessage($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereTitle($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereType($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereUpdatedAt($value)
- * @method static \Illuminate\Database\Query\Builder|\Ignite\Core\Entities\Notification whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereIconClass($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereIsRead($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereLink($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereMessage($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereTitle($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereType($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\Ignite\Core\Entities\Notification whereUserId($value)
  * @mixin \Eloquent
  */
 class Notification extends Model {

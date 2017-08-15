@@ -33,7 +33,7 @@ class RunSync extends Command
         $this->callSilent('backup:run', ['--only-db' => true]);
         $this->info('Trying to sync');
         $r_sync = new Sync($this);
-        $r_sync->runSync(env('SYNC_TYPE'));
+        $r_sync->runSync(env('SYNC_TYPE', 'remote'));
     }
 
 }
