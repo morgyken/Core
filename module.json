@@ -22,10 +22,10 @@
         "Maatwebsite\\Sidebar\\SidebarServiceProvider",
         "Jenssegers\\Date\\DateServiceProvider",
         "Barryvdh\\DomPDF\\ServiceProvider",
-        "Spatie\\Backup\\BackupServiceProvider"
+        "Spatie\\Backup\\BackupServiceProvider",
+        "Khill\\Lavacharts\\Laravel\\LavachartsServiceProvider"
     ],
     "widgets": [
-        "Ignite\\Core\\Widgets\\GraphWidget"
     ],
     "aliases": {
         "Form": "Collective\\Html\\FormFacade",

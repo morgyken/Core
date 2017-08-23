@@ -9,7 +9,7 @@ $orders = get_purchase_orders();
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3 class="box-title">Monthly Recap Report</h3>
+                <h3 class="box-title"></h3>
 
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -20,9 +20,6 @@ $orders = get_purchase_orders();
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="#">Synchronize system</a></li>
                             <li><a href="#">Backup</a></li>
-                            <li><a href="#">Export reports</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Set reminder</a></li>
                         </ul>
                     </div>
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -33,7 +30,7 @@ $orders = get_purchase_orders();
                 <div class="row">
                     <div class="col-md-8">
                         <p class="text-center">
-                            <strong>Sales: 1 Jan, 2016 - 30 Jul, 2016</strong>
+                            <strong>Visits: 1 Jan, 2016 - 30 Jul, 2016</strong>
                         </p>
 
                         <div class="chart">
@@ -96,7 +93,7 @@ $orders = get_purchase_orders();
                         <div class="description-block border-right">
                             <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
                             <h5 class="description-header">Ksh 35,210.43</h5>
-                            <span class="description-text">TOTAL REVENUE</span>
+                            <span class="description-text">Visits</span>
                         </div>
                         <!-- /.description-block -->
                     </div>
@@ -105,7 +102,7 @@ $orders = get_purchase_orders();
                         <div class="description-block border-right">
                             <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
                             <h5 class="description-header">Ksh 10,390.90</h5>
-                            <span class="description-text">TOTAL COST</span>
+                            <span class="description-text">Patients</span>
                         </div>
                         <!-- /.description-block -->
                     </div>
@@ -123,7 +120,7 @@ $orders = get_purchase_orders();
                         <div class="description-block">
                             <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
                             <h5 class="description-header">1200</h5>
-                            <span class="description-text">GOAL COMPLETIONS</span>
+                            <span class="description-text">GOAL COMPLETION</span>
                         </div>
                         <!-- /.description-block -->
                     </div>
@@ -140,8 +137,7 @@ $orders = get_purchase_orders();
         <!-- TABLE: LATEST ORDERS -->
         <div class="box box-info">
             <div class="box-header with-border">
-                <h3 class="box-title">Latest Purchase Orders</h3>
-
+                <h3 class="box-title">My Calendar</h3>
                 <div class="box-tools pull-right">
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
@@ -150,36 +146,12 @@ $orders = get_purchase_orders();
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-                <div class="table-responsive">
-                    <table class="table no-margin">
-                        <thead>
-                            <tr>
-                                <th>Order ID</th>
-                                <th>Supplier</th>
-                                <th>Status</th>
-                                <th>Date</th>
-                                <th>Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($orders as $order)
-                            <tr>
-                                <td><a href="{{route('inventory.order_details',$order->id)}}"># {{$order->id}}</a></td>
-                                <td>{{$order->suppliers->name}}</td>
-                                <td><span class="{{order_label($order->status)}}">{{$order->status_label}}</span></td>
-                                <td>{{$order->deliver_date}}</td>
-                                <td>{{$order->totals}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <!-- /.table-responsive -->
+                {!! $calendar->calendar() !!}
+                {!! $calendar->script() !!}
             </div>
             <!-- /.box-body -->
             <div class="box-footer clearfix">
-                <a href="{{route('inventory.new_lpo')}}" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a>
-                <a href="{{route('inventory.purchase_orders')}}" class="btn btn-sm btn-default btn-flat pull-right">View All Orders</a>
+
             </div>
             <!-- /.box-footer -->
         </div>

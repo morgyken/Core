@@ -35,9 +35,10 @@ class GraphWidget extends BaseDashboardWidgets {
      */
     protected function options() {
         return [
-            'width' => '12',
+            'width' => '6',
             'height' => '2',
-            'x' => '2',
+            'x' => '0',
+            'y' => '2',
         ];
     }
 
