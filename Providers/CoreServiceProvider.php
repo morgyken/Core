@@ -18,11 +18,13 @@ use Ignite\Core\Console\PublishModuleAssetsCommand;
 use Ignite\Core\Console\RunSync;
 use Ignite\Core\Console\ThemeScaffoldCommand;
 use Ignite\Core\Console\UpdateModuleCommmand;
+use Illuminate\Contracts\Events\Dispatcher;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 use Ignite\Core\Console\InstallCommand;
 use Ignite\Core\Console\PublishThemeAssetsCommand;
 use Ignite\Core\Foundation\Theme\ThemeManager;
+use Nwidart\Modules\Module;
 
 class CoreServiceProvider extends ServiceProvider
 {
@@ -52,6 +54,10 @@ class CoreServiceProvider extends ServiceProvider
             'can' => 'AuthorizationMiddleware',
         ],
     ];
+    /**
+     * @var Dispatcher
+     */
+    private $dispatcher;
 
     /**
      * Boot the application events.
@@ -175,11 +181,30 @@ class CoreServiceProvider extends ServiceProvider
         }
     }
 
+    /**
+     * @param Module $module
+     */
+    private function moduleConsoleKernel($module)
+    {
+        $name = studly_case($module->get('name'));
+        $class = 'Ignite\\' . $name . '\\Console\\Kernel';
+        if (class_exists($class)) {
+            $ab = 'dervis.kernel.' . $module->getAlias();
+            $this->app->singleton($ab, function ($app) use ($class) {
+                return new $class($app, $this->dispatcher);
+            });
+            $this->app->make($ab);
+        }
+
+    }
+
     private function registerModuleResourceNamespaces()
     {
+        $this->dispatcher = $this->app->make(Dispatcher::class);
         foreach ($this->app['modules']->getOrdered() as $module) {
             $this->registerViewNamespace($module);
             $this->registerConfigNamespace($module);
+            $this->moduleConsoleKernel($module);
         }
     }
 
