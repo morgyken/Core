@@ -41,6 +41,7 @@ class ProtectInstaller implements SetupScript {
         if ($this->finder->isFile('.env') && !$command->option('force')) {
             throw new Exception('iClinic <Collabmed> has already been installed. You can already log into your administration.');
         }
+
         if ($command->option('careless')) {
             $command->blockMessage('Database', 'Checking database', 'comment');
             $command->error('All previous data will be lost');
@@ -52,6 +53,7 @@ class ProtectInstaller implements SetupScript {
             $command->info('...done!');
             $mysqli->close();
         }
+
     }
 
 }

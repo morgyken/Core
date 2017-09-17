@@ -44,6 +44,7 @@ class SidebarExtender implements \Maatwebsite\Sidebar\SidebarExtender {
                 $item->icon('fa fa-dashboard');
                 $item->route('system.dashboard');
             });
+
             $group->item('Sudo', function (Item $item) {
                 $item->icon('fa fa-code');
                 $item->authorize($this->auth->isSudo());

@@ -36,14 +36,18 @@ class DashboardController extends AdminBaseController {
      * @return \Illuminate\View\View
      */
     public function index() {
-        $this->requireAssets();
-        $widget = $this->widget->findForUser($this->auth->check()->id);
-        $customWidgets = json_encode(null);
-        if ($widget) {
-            $customWidgets = $widget->widgets;
+        if(!\Auth::user()->ex) {
+            $this->requireAssets();
+            $widget = $this->widget->findForUser($this->auth->check()->id);
+            $customWidgets = json_encode(null);
+            if ($widget) {
+                $customWidgets = $widget->widgets;
+            }
+            //return view('core::native', ['data' => $customWidgets]);
+            return view('dashboard::dashboard', compact('customWidgets'));
+        }else{
+            return redirect()->back();
         }
-        //return view('core::native', ['data' => $customWidgets]);
-        return view('dashboard::dashboard', compact('customWidgets'));
     }
 
     /**
