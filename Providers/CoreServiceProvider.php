@@ -14,6 +14,7 @@ namespace Ignite\Core\Providers;
 
 use Config;
 use Ignite\Core\Console\ModuleScaffoldCommand;
+use Ignite\Core\Console\PublishAssets;
 use Ignite\Core\Console\PublishModuleAssetsCommand;
 use Ignite\Core\Console\RunSync;
 use Ignite\Core\Console\ThemeScaffoldCommand;
@@ -158,6 +159,7 @@ class CoreServiceProvider extends ServiceProvider
             ModuleScaffoldCommand::class,
             ThemeScaffoldCommand::class,
             RunSync::class,
+            PublishAssets::class
         ]);
     }
 

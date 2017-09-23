@@ -49,7 +49,7 @@ return [
         'backend' => [
             'auth.admin',
             'setup'
-        // 'permissions',
+            // 'permissions',
         ],
         'frontend' => ['guest'],
         //'api' => ['auth:api'],
@@ -83,6 +83,7 @@ return [
         'animate.css' => ['theme' => 'vendor/animate.css/animate.min.css'],
         'pace.css' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.css'],
         'datatables.css' => ['theme' => 'vendor/DataTables/datatables.min.css'],
+        'swal.css' => ['theme' => 'vendor/swal/sweetalert2.min.css'],
         // Javascript
         'bootstrap.js' => ['theme' => 'vendor/bootstrap/dist/js/bootstrap.min.js'],
         'mousetrap.js' => ['theme' => 'js/vendor/mousetrap.min.js'],
@@ -115,6 +116,7 @@ return [
         'pace.js' => ['theme' => 'vendor/admin-lte/plugins/pace/pace.min.js'],
         'moment.js' => ['theme' => 'vendor/admin-lte/plugins/daterangepicker/moment.min.js'],
         'datatables.js' => ['theme' => 'vendor/DataTables/datatables.min.js'],
+        'swal.js' => ['theme' => 'vendor/swal/sweetalert2.min.js'],
     ],
     /*
       |--------------------------------------------------------------------------
