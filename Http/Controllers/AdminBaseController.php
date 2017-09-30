@@ -15,11 +15,14 @@ namespace Ignite\Core\Http\Controllers;
 use FloatingPoint\Stylist\Facades\ThemeFacade as Theme;
 use Ignite\Core\Foundation\Asset\Manager\AssetManager;
 use Ignite\Core\Foundation\Asset\Pipeline\AssetPipeline;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller;
 
 class AdminBaseController extends Controller
 {
-
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     /**
      * @var AssetManager
      */
