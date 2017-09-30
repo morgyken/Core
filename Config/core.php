@@ -141,7 +141,8 @@ return [
             'select2-bs.css',
             'jquery-ui.css',
             'datatables.css',
-            'custom.css'
+            'custom.css',
+            'swal.css'
         ],
         'js' => [
             'bootstrap.js',
@@ -162,7 +163,8 @@ return [
             'jquery-ui.js',
             'selectize.js',
             'ckeditor.js',
-            'datatables.js'
+            'datatables.js',
+            'swal.js'
         ],
     ],
 ];
