@@ -29,7 +29,7 @@ trait ShouldEncrypt {
             try {
                 //$value = Crypt::decrypt($value);
                 $value = openssl_decrypt($value, $this->method, $this->password, OPENSSL_RAW_DATA, $this->IV);
-            } catch (Exception $e) {
+            } catch (\Exception $e) {
                 dd($e);
             }
         }
