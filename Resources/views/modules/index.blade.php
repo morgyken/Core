@@ -96,7 +96,7 @@
                         $btn.button('reset');
                         $btn.removeClass('btn-primary');
                         $btn.addClass('btn-success');
-                        $btn.html('<i class="fa fa-check"></i> Module updated!')
+                        $btn.html('<i class="fa fa-check"></i> Module updated!');
                         setTimeout(function () {
                             $btn.removeClass('btn-success');
                             $btn.addClass('btn-primary');
