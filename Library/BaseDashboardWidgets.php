@@ -27,7 +27,7 @@ abstract class BaseDashboardWidgets {
      */
     public function boot() {
         $widgetViewComposer = app(DashboardWidgetViewComposer::class);
-        /** @var Factory $view */
+        /** @var ViewFactory $view */
         $view = app(ViewFactory::class);
 
         if ($view->exists($this->view())) {
