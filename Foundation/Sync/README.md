@@ -23,7 +23,7 @@ Change behaviour:
 ```php
 <?php
 
-use Ignite\Core\Foundation\Sync\Rsyncc;
+use Ignite\Core\Foundation\Sync\Rsync;
 
 $origin = __DIR__;
 $target = "/target/dir";
