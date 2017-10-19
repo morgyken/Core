@@ -17,133 +17,127 @@ class Sync
     /**
      * @var RunSync
      */
-    private $console;
+    private static $console;
+
     /**
      * @var Filesystem
      */
-    private $filesystem;
+    private static $filesystem;
     /**
      * @var string
      */
-    private $host = 'collabmed.net';
+    private static $host = 'collabmed.net';
     /**
      * @var string
      */
-    private $folder;
-    /**
-     * @var string
-     */
-    private $the_file;
+    private static $folder;
+    private static $the_file;
+    private static $upload_to;
 
-    /**
-     * Sync constructor.
-     * @param RunSync $console
-     */
-    public function __construct($console)
+
+    public static function init(RunSync $console)
     {
-        $this->console = $console;
-        $this->setFileSystem();
-        $this->folder = config('laravel-backup.backup.name') . '/';
+        static::$console = $console;
+        self::setFileSystem();
+        static::$folder = config('laravel-backup.backup.name') . '/';
+        return new static;
     }
 
     /**
      * @return Filesystem
      */
-    private function setFileSystem()
+    private static function setFileSystem()
     {
         $adapter = new SftpAdapter([
             'host' => 'collabmed.net',
             'port' => 22,
             'username' => 'root',
             'password' => 'new23west',
-            // 'privateKey' => 'path/to/or/contents/of/privatekey',
+//            'privateKey' => '~/.ssh/id_rsa',
             'root' => '/var/www/backups/',
             'timeout' => 10,
             'directoryPerm' => 0755
         ]);
-        $this->filesystem = new Filesystem($adapter);
+        static::$filesystem = new Filesystem($adapter);
     }
 
     /**
      * Retrieve last database dump
      * @return mixed
      */
-    private function last_database_dump()
+    private static function last_database_dump()
     {
-        $list = Storage::allFiles($this->folder);
+        $list = Storage::allFiles(self::$folder);
         end($list);
         $last = prev($list);
         $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix(); // . $folder;
+
         $file = $path . $last;
-        $zip = new \ZipArchive;
-        if ($zip->open($file) === TRUE) {
-            $zip->extractTo($path . $this->folder);
-            $zip->close();
-            $this->the_file = $this->folder . 'db-dumps/mysql-' . env('DB_DATABASE') . '.sql';
-            return true; //$folder . 'clinic_v2.sql';
-        }
-        return false;
+        self::$the_file = $last;
+        self::$upload_to = self::$folder . $last;
+        return true;
+//        $zip = new \ZipArchive;
+//        if ($zip->open($file) === TRUE) {
+//            $zip->extractTo($path . self::$folder);
+//            $zip->close();
+//            self::$the_file = self::$folder . 'db-dumps/mysql-' . env('DB_DATABASE') . '.sql';
+//            return true; //$folder . 'clinic_v2.sql';
+//        }
+//        return false;
     }
 
     /**
      * @return bool
      */
-    private function is_online()
+    private static function is_online()
     {
-        return checkdnsrr($this->host);
+        return checkdnsrr(self::$host);
     }
 
     /**
      * Upload to the server
      */
-    public function upload_to_remote()
+    public static function upload_to_remote()
     {
-        $filename = env('DB_DATABASE') . '.sql';
-        if (!$this->is_online()) {
-            $this->console->warn('You are offline');
+        if (!self::is_online()) {
+            self::$console->error('You are offline');
             return false; //probably need to notify
         }
-        $ll = $this->folder . $filename;
-        $exists = Storage::disk()->exists($ll);
-        if ($exists) {
-            $this->console->info('Delete existing file ' . $ll);
-            Storage::delete($ll);
-        }
-        if (!$this->last_database_dump()) {
+        if (!self::last_database_dump()) {
             return false;
         }
-        $this->console->info("File path: ==> " . $this->the_file);
-        $this->console->info("Storage path on server: ==> " . $ll);
-        return $this->filesystem->put($ll, Storage::get($this->the_file));
+        self::$console->info("File path: ==> " . self::$the_file);
+        self::$console->info("Storage path on server: ==> " . self::$upload_to);
+        return self::$filesystem->put(self::$upload_to, Storage::get(self::$the_file));
     }
 
     /**
      * @param $commands
      * @return bool
      */
-    public function importSql()
+    public static function importSql()
     {
         $filename = env('DB_DATABASE') . '.sql';
-        $path = '/var/www/backups/' . $this->folder . $filename;
-        $this->console->info('File path: ==> ' . $path);
+        $path = '/var/www/backups/' . self::$folder . $filename;
+        self::$console->info('File path: ==> ' . $path);
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . " < $path";
-        $this->console->info('Command ==> ' . $command_string);
+        self::$console->info('Command ==> ' . $command_string);
         \exec($command_string);
         return true;
     }
 
-    public function runSync($type = 'local')
+    public static function runSync($type = 'local')
     {
         if ($type === 'local') {
-            $this->console->warn('Trying to upload.');
-            $result = $this->upload_to_remote();
+            self::$console->warn('Trying to upload.');
+            $result = self::upload_to_remote();
         } else {
-            $this->console->warn('Trying to import.');
-            $result = $this->importSql();
+            self::$console->warn('Trying to import.');
+            $result = $result = self::importSql();
         }
         if ($result)
-            $this->console->info('Okay! Nice');
+            self::$console->info('Okay! Nice');
         else
-            $this->console->error('Failed..... ');
+            self::$console->error('Failed..... ');
     }
 }
