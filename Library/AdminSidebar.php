@@ -23,7 +23,8 @@ use Maatwebsite\Sidebar\Traits\CacheableTrait;
  *
  * @author samueldervis
  */
-class AdminSidebar implements Sidebar, ShouldCache {
+class AdminSidebar implements Sidebar, ShouldCache
+{
 
     use CacheableTrait;
 
@@ -38,11 +39,12 @@ class AdminSidebar implements Sidebar, ShouldCache {
     protected $container;
 
     /**
-     * @param Menu                $menu
-     * @param RepositoryInterface $modules
-     * @param Container           $container
+     * AdminSidebar constructor.
+     * @param Menu $menu
+     * @param Container $container
      */
-    public function __construct(Menu $menu, Container $container) {
+    public function __construct(Menu $menu, Container $container)
+    {
         $this->menu = $menu;
         $this->container = $container;
     }
@@ -50,15 +52,16 @@ class AdminSidebar implements Sidebar, ShouldCache {
     /**
      * Build your sidebar implementation here
      */
-    public function build() {
-        $enabled = \Module::enabled();
+    public function build()
+    {
+        $enabled = \Module::getOrdered();
         foreach ($enabled as $module) {
             $name = studly_case($module->get('name'));
             $class = 'Ignite\\' . $name . '\\Sidebar\\SidebarExtender';
             if (class_exists($class)) {
                 $extender = $this->container->make($class);
                 $this->menu->add(
-                        $extender->extendWith($this->menu)
+                    $extender->extendWith($this->menu)
                 );
             }
         }
@@ -67,7 +70,8 @@ class AdminSidebar implements Sidebar, ShouldCache {
     /**
      * @return Menu
      */
-    public function getMenu() {
+    public function getMenu()
+    {
         return $this->menu;
     }
 
