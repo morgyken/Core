@@ -56,8 +56,8 @@ class ModuleSeeders implements SetupScript
         if ($command->option('seed')) {
             $command->warn('Seeding extra data');
             foreach (\Module::getOrdered() as $module) {
-                if (\Module::has($module)) {
-                    $command->call('module:seed', ['module' => $module]);
+                if (\Module::has($module->getName())) {
+                    $command->call('module:seed', ['module' => $module->getName()]);
                 }
             }
         } else {
