@@ -25,6 +25,7 @@ class ModuleSeeders implements SetupScript
         'Setup',
         'Users',
         'Core',
+        'Settings',
     ];
     protected $secondary = [
         'Setup',
@@ -34,7 +35,6 @@ class ModuleSeeders implements SetupScript
         'Messaging',
         'Finance',
         'Inventory',
-        'Setup',
         'Core',
         'Users',
         'Settings',
