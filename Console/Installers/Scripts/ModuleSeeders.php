@@ -22,9 +22,9 @@ class ModuleSeeders implements SetupScript
      * @var array
      */
     protected $modules = [
-        'Core',
-        'Users',
-        'Setup',
+//        'Users',
+//        'Setup',
+//        'Core',
     ];
     protected $secondary = [
         'Setup',
