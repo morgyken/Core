@@ -22,9 +22,9 @@ class ModuleSeeders implements SetupScript
      * @var array
      */
     protected $modules = [
-//        'Users',
-//        'Setup',
-//        'Core',
+        'Setup',
+        'Users',
+        'Core',
     ];
     protected $secondary = [
         'Setup',
@@ -53,11 +53,6 @@ class ModuleSeeders implements SetupScript
 //            $command->call('module:seed', ['module' => $module->getName()]);
 //        }
 
-        foreach ($this->modules as $module) {
-            if (\Module::has($module)) {
-                $command->call('module:seed', ['module' => $module]);
-            }
-        }
         if ($command->option('seed')) {
             $command->warn('Seeding extra data');
             foreach (\Module::getOrdered() as $module) {
