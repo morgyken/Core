@@ -57,8 +57,8 @@
         </div>
     </div>
 
-    {!! Charts::scripts() !!}
-    {!! Charts::styles() !!}
+    {{--Charts::scripts() !!}--}}
+    {{--Charts::styles() !!}--}}
 @stop
 
 @section('scripts')
