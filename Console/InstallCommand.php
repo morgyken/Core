@@ -20,6 +20,7 @@ use Ignite\Core\Console\Installers\Scripts\ModuleMigrator;
 use Ignite\Core\Console\Installers\Scripts\ModuleSeeders;
 use Ignite\Core\Console\Installers\Scripts\ProtectInstaller;
 use Ignite\Core\Console\Installers\Scripts\SetAppKey;
+use Ignite\Core\Console\Installers\Scripts\TemplateInstaller;
 use Illuminate\Console\Command;
 //use Ignite\Core\Console\Installers\Scripts\ConfigureDatabase;
 use Ignite\Core\Console\Installers\Scripts\ThemeAssets;
@@ -27,7 +28,8 @@ use Ignite\Core\Console\Installers\Traits\BlockMessage;
 use Ignite\Core\Console\Installers\Traits\SectionMessage;
 use Symfony\Component\Console\Input\InputOption;
 
-class InstallCommand extends Command {
+class InstallCommand extends Command
+{
 
     use BlockMessage,
         SectionMessage;
@@ -59,7 +61,8 @@ class InstallCommand extends Command {
      * @internal param Application $app
      * @internal param Composer $composer
      */
-    public function __construct(Installer $installer) {
+    public function __construct(Installer $installer)
+    {
         parent::__construct();
         $this->getLaravel()['env'] = 'local';
         $this->installer = $installer;
@@ -70,32 +73,36 @@ class InstallCommand extends Command {
      *
      * @return mixed
      */
-    public function fire() {
+    public function fire()
+    {
         $this->blockMessage('Welcome!', 'Starting the installation process...', 'comment');
 
         $success = $this->installer->stack([
-                    ProtectInstaller::class,
-                    // ConfigureDatabase::class,
-                    SetAppKey::class,
-                    HouseKeeping::class,
-                    ModuleMigrator::class,
-                    ModuleSeeders::class,
-                    ModuleAssets::class,
-                    ThemeAssets::class,
-                    //UnignoreComposerLock::class,
-                    ConfigureUserProvider::class,
-                ])->install($this);
+            ProtectInstaller::class,
+            // ConfigureDatabase::class,
+            SetAppKey::class,
+            HouseKeeping::class,
+            ModuleMigrator::class,
+            ModuleSeeders::class,
+            TemplateInstaller::class,
+            ModuleAssets::class,
+            ThemeAssets::class,
+            //UnignoreComposerLock::class,
+            ConfigureUserProvider::class,
+        ])->install($this);
 
         if ($success) {
             $this->info('Collabmed health Platform ready! You can now login with your username and password');
         }
     }
 
-    protected function getOptions() {
+    protected function getOptions()
+    {
         return [
             ['force', 'f', InputOption::VALUE_NONE, 'Force the installation, even if already installed'],
             ['careless', 'c', InputOption::VALUE_NONE, 'Destroy current data and start a fresh'],
             ['seed', 's', InputOption::VALUE_NONE, 'Install sample data in application'],
+            ['templates', 't', InputOption::VALUE_NONE, 'Import template files'],
         ];
     }
 

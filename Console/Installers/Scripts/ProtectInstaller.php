@@ -17,7 +17,8 @@ use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Ignite\Core\Console\Installers\SetupScript;
 
-class ProtectInstaller implements SetupScript {
+class ProtectInstaller implements SetupScript
+{
 
     /**
      * @var Filesystem
@@ -27,17 +28,19 @@ class ProtectInstaller implements SetupScript {
     /**
      * @param Filesystem $finder
      */
-    public function __construct(Filesystem $finder) {
+    public function __construct(Filesystem $finder)
+    {
         $this->finder = $finder;
     }
 
     /**
      * Fire the install script
-     * @param  Command   $command
+     * @param  Command $command
      * @return mixed
      * @throws Exception
      */
-    public function fire(Command $command) {
+    public function fire(Command $command)
+    {
         if ($this->finder->isFile('.env') && !$command->option('force')) {
             throw new Exception('iClinic <Collabmed> has already been installed. You can already log into your administration.');
         }
@@ -46,9 +49,9 @@ class ProtectInstaller implements SetupScript {
             $command->blockMessage('Database', 'Checking database', 'comment');
             $command->error('All previous data will be lost');
             $mysqli = new \mysqli(env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD'));
-            $command->info('Drop existing database');
+            $command->info('Drop existing database ==> [' . env('DB_DATABASE') . ']');
             $mysqli->query('drop database if exists ' . env('DB_DATABASE'));
-            $command->info('Creating new database');
+            $command->info('Creating new database ==> [' . env('DB_DATABASE') . ']');
             $mysqli->query('create database ' . env('DB_DATABASE'));
             $command->info('...done!');
             $mysqli->close();
