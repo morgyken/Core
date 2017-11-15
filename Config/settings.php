@@ -14,6 +14,11 @@ return[
         'description' => 'Site Name',
         'view' => 'text',
     ],
+    'only_logo' => [
+        'description' => 'Only logo to appear on print-out headers',
+        'view' => 'checkbox',
+        'hint' => 'Recomended if facility logo bears the facility name.'
+    ],
     'site-description' => [
         'description' => 'Description',
         'view' => 'textarea',
