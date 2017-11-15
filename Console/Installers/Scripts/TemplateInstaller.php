@@ -18,14 +18,16 @@ class TemplateInstaller implements SetupScript
     {
         if ($command->option('templates')) {
             $command->blockMessage('Templates', 'Importing templates', 'comment');
+            $mysqli = new \mysqli(env('DB_HOST'), env('DB_USERNAME'), env('DB_PASSWORD'), env('DB_DATABASE'));
             $file = module_path('Evaluation') . '/Database/lab.sql';
+            $mysqli->query('SET FOREIGN_KEY_CHECKS=0;');
             if ($fp = file_get_contents($file)) {
-                $var_array = explode(';', $fp);
-                foreach ($var_array as $value) {
-                   \DB::raw($value . ';');
-                }
+                $mysqli->query($fp);
+                dd($mysqli->error);
             }
+            $mysqli->query('SET FOREIGN_KEY_CHECKS=0;');
             $command->info('...done!');
+            $mysqli->close();
         }
     }
 }

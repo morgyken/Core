@@ -142,7 +142,7 @@ return [
             'jquery-ui.css',
             'datatables.css',
             'custom.css',
-            'swal.css'
+//            'swal.css'
         ],
         'js' => [
             'bootstrap.js',
