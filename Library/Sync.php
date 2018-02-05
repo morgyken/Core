@@ -70,20 +70,9 @@ class Sync
         $list = Storage::allFiles(self::$folder);
         end($list);
         $last = prev($list);
-        $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix(); // . $folder;
-
-        $file = $path . $last;
         self::$the_file = $last;
-        self::$upload_to = self::$folder . $last;
+        self::$upload_to = $last;
         return true;
-//        $zip = new \ZipArchive;
-//        if ($zip->open($file) === TRUE) {
-//            $zip->extractTo($path . self::$folder);
-//            $zip->close();
-//            self::$the_file = self::$folder . 'db-dumps/mysql-' . env('DB_DATABASE') . '.sql';
-//            return true; //$folder . 'clinic_v2.sql';
-//        }
-//        return false;
     }
 
     /**
