@@ -17,6 +17,7 @@ use Ignite\Core\Console\ModuleScaffoldCommand;
 use Ignite\Core\Console\PublishAssets;
 use Ignite\Core\Console\PublishModuleAssetsCommand;
 use Ignite\Core\Console\RunSync;
+use Ignite\Core\Console\ScheduledEvents;
 use Ignite\Core\Console\ThemeScaffoldCommand;
 use Ignite\Core\Console\UpdateModuleCommmand;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -159,7 +160,8 @@ class CoreServiceProvider extends ServiceProvider
             ModuleScaffoldCommand::class,
             ThemeScaffoldCommand::class,
             RunSync::class,
-            PublishAssets::class
+            PublishAssets::class,
+            ScheduledEvents::class
         ]);
     }
 
@@ -197,13 +199,14 @@ class CoreServiceProvider extends ServiceProvider
             });
             $this->app->make($ab);
         }
-
     }
 
     private function registerModuleResourceNamespaces()
     {
         $this->dispatcher = $this->app->make(Dispatcher::class);
-        foreach ($this->app['modules']->getOrdered() as $module) {
+        $modules = $this->app['modules']->getOrdered();
+//        dd($modules);
+        foreach ($modules as $module) {
             $this->registerViewNamespace($module);
             $this->registerConfigNamespace($module);
             $this->moduleConsoleKernel($module);
