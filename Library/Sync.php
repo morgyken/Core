@@ -108,6 +108,7 @@ class Sync
     {
         $filename = env('DB_DATABASE') . '.sql';
         $path = '/var/www/backups/' . self::$folder . $filename;
+        dd($path);
         self::$console->info('File path: ==> ' . $path);
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . " < $path";
         self::$console->info('Command ==> ' . $command_string);
