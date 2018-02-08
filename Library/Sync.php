@@ -106,6 +106,10 @@ class Sync
      */
     public static function importSql()
     {
+        $files = glob('/var/www/backups/' . self::$folder . '*.zip');
+        $files = array_combine($files, array_map("filemtime", $files));
+        arsort($files);
+        dd(get_defined_vars());
         $filename = env('DB_DATABASE') . '.sql';
         $path = '/var/www/backups/' . self::$folder . $filename;
         dd($path);
