@@ -110,12 +110,14 @@ class Sync
         $files = array_combine($files, array_map("filemtime", $files));
         arsort($files);
         $latest_file = key($files);
+        $unzip = 'unzip -p ' . $latest_file;
+        $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE');
+        $x = system($unzip . '|' . $command_string);
         dd(get_defined_vars());
         $filename = env('DB_DATABASE') . '.sql';
         $path = '/var/www/backups/' . self::$folder . $filename;
         dd($path);
         self::$console->info('File path: ==> ' . $path);
-        $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . " < $path";
         self::$console->info('Command ==> ' . $command_string);
         \exec($command_string);
         return true;
