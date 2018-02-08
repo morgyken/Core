@@ -110,7 +110,7 @@ class Sync
         $files = array_combine($files, array_map("filemtime", $files));
         arsort($files);
         $latest_file = key($files);
-        $unzip = 'unzip -p ' . $latest_file;
+        $unzip = 'xcat' . $latest_file;
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE');
         $piped = $unzip . ' | ' . $command_string;
         $x = \shell_exec($piped);
