@@ -112,7 +112,8 @@ class Sync
         $latest_file = key($files);
         $unzip = 'unzip -p ' . $latest_file;
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE');
-        $x = \exec($unzip . '|' . $command_string);
+        $piped = $unzip . '|' . $command_string;
+        $x = \exec($piped);
         dd(get_defined_vars());
         $filename = env('DB_DATABASE') . '.sql';
         $path = '/var/www/backups/' . self::$folder . $filename;
