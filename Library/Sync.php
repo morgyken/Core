@@ -126,6 +126,7 @@ class Sync
 
     public static function runSync($type = 'local')
     {
+        ini_set('memory_limit', '-1');
         self::$console->info('Trying to sync now');
         if ($type === 'local') {
             self::$console->info('Taking database snapshot');
