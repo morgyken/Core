@@ -126,7 +126,10 @@ class Sync
 
     public static function runSync($type = 'local')
     {
+        self::$console->info('Trying to sync now');
         if ($type === 'local') {
+            self::$console->info('Taking database snapshot');
+            self::$console->call('backup:run', ['--only-db' => true]);
             self::$console->warn('Trying to upload.');
             $result = self::upload_to_remote();
         } else {
