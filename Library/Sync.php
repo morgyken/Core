@@ -111,7 +111,6 @@ class Sync
         $files = array_combine($files, array_map("filemtime", $files));
         arsort($files);
         $latest_file = key($files);
-        dd($latest_file);
         $unzip = 'zcat ' . $latest_file;
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . ' -f --verbose';
         $piped = $unzip . ' | ' . $command_string;
