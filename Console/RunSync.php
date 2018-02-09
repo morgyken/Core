@@ -30,14 +30,7 @@ class RunSync extends Command
      */
     public function fire()
     {
-//        Sync::init($this)->runSync(env('SYNC_TYPE', 'remote'));
-        $this->call('db:backup',
-            [
-                '--database' => 'mysql',
-                '--destination' => 'sftp',
-                '--destinationPath' => env('DB_DATABASE'),
-                '--timestamp' => 'd-m-Y',
-                '--compression' => 'gzip']);
+        Sync::init($this)->runSync(env('SYNC_TYPE', 'remote'));
     }
 
 }

@@ -106,10 +106,11 @@ class Sync
      */
     public static function importSql()
     {
-        $files = glob('/var/www/backups/' . self::$folder . '*.zip');
+        $files = glob('/var/www/backups/' . env('DB_DATABASE') . '*.gz');
         $files = array_combine($files, array_map("filemtime", $files));
         arsort($files);
         $latest_file = key($files);
+        dd($latest_file);
         $unzip = 'zcat ' . $latest_file;
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . ' -f --verbose';
         $piped = $unzip . ' | ' . $command_string;
@@ -126,20 +127,26 @@ class Sync
 
     public static function runSync($type = 'local')
     {
-        ini_set('memory_limit', '-1');
+//        ini_set('memory_limit', '-1');
         self::$console->info('Trying to sync now');
         if ($type === 'local') {
             self::$console->info('Taking database snapshot');
-            self::$console->call('backup:run', ['--only-db' => true]);
+            self::$console->call('db:backup',
+                [
+                    '--database' => 'mysql',
+                    '--destination' => 'sftp',
+                    '--destinationPath' => env('DB_DATABASE'),
+                    '--timestamp' => 'YmdHis',
+                    '--compression' => 'gzip']);
             self::$console->warn('Trying to upload.');
-            $result = self::upload_to_remote();
+//            $result = self::upload_to_remote();
         } else {
             self::$console->warn('Trying to import.');
             $result = $result = self::importSql();
         }
-        if ($result)
-            self::$console->info('Okay! Nice');
-        else
-            self::$console->error('Failed..... ');
+//        if ($result)
+        self::$console->info('Okay! Nice');
+//        else
+//            self::$console->error('Failed..... ');
     }
 }
