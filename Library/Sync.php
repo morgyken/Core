@@ -106,6 +106,7 @@ class Sync
      */
     public static function importSql()
     {
+        ini_set('memory_limit', '-1');
         $files = glob('/var/www/backups/' . env('DB_DATABASE') . '*.gz');
 //        $files = glob('/var/www/backups/' . 'platform'. '*.gz');
         $files = array_combine($files, array_map("filemtime", $files));
