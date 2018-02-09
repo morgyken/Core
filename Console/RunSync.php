@@ -30,9 +30,6 @@ class RunSync extends Command
      */
     public function fire()
     {
-        $this->info('Taking database snapshot');
-        $this->call('backup:run', ['--only-db' => true]);
-        $this->info('Trying to sync now');
         Sync::init($this)->runSync(env('SYNC_TYPE', 'remote'));
     }
 

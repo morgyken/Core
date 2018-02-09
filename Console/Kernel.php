@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         parent::schedule($schedule);
-        $schedule->command('system:sync')->everyThirtyMinutes(); //->at('01:00');
+        $schedule->command('system:sync')->everyFiveMinutes();
         $schedule->command('backup:clean')->daily(); //->at('01:00');
         $schedule->command('backup:run --only-db')->daily(); //->at('01:00');
     }

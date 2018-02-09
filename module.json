@@ -21,8 +21,8 @@
         "Maatwebsite\\Sidebar\\SidebarServiceProvider",
         "Jenssegers\\Date\\DateServiceProvider",
         "Barryvdh\\DomPDF\\ServiceProvider",
-        "Spatie\\Backup\\BackupServiceProvider",
-        "Khill\\Lavacharts\\Laravel\\LavachartsServiceProvider"
+        "Khill\\Lavacharts\\Laravel\\LavachartsServiceProvider",
+        "BackupManager\\Laravel\\Laravel5ServiceProvider"
     ],
     "widgets": [
     ],

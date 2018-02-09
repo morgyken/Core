@@ -70,20 +70,9 @@ class Sync
         $list = Storage::allFiles(self::$folder);
         end($list);
         $last = prev($list);
-        $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix(); // . $folder;
-
-        $file = $path . $last;
         self::$the_file = $last;
-        self::$upload_to = self::$folder . $last;
+        self::$upload_to = $last;
         return true;
-//        $zip = new \ZipArchive;
-//        if ($zip->open($file) === TRUE) {
-//            $zip->extractTo($path . self::$folder);
-//            $zip->close();
-//            self::$the_file = self::$folder . 'db-dumps/mysql-' . env('DB_DATABASE') . '.sql';
-//            return true; //$folder . 'clinic_v2.sql';
-//        }
-//        return false;
     }
 
     /**
@@ -117,27 +106,48 @@ class Sync
      */
     public static function importSql()
     {
+        $files = glob('/var/www/backups/' . env('DB_DATABASE') . '*.gz');
+//        $files = glob('/var/www/backups/' . 'platform'. '*.gz');
+        $files = array_combine($files, array_map("filemtime", $files));
+        arsort($files);
+        $latest_file = key($files);
+        $unzip = 'zcat ' . $latest_file;
+        $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . ' -f --verbose';
+        $piped = $unzip . ' | ' . $command_string;
+        $x = \shell_exec($piped);
+        /*
+        dd(get_defined_vars());
         $filename = env('DB_DATABASE') . '.sql';
         $path = '/var/www/backups/' . self::$folder . $filename;
+        dd($path);
         self::$console->info('File path: ==> ' . $path);
-        $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . " < $path";
         self::$console->info('Command ==> ' . $command_string);
-        \exec($command_string);
+        \exec($command_string);*/
         return true;
     }
 
     public static function runSync($type = 'local')
     {
+//        ini_set('memory_limit', '-1');
+        self::$console->info('Trying to sync now');
         if ($type === 'local') {
+            self::$console->info('Taking database snapshot');
+            self::$console->call('db:backup',
+                [
+                    '--database' => 'mysql',
+                    '--destination' => 'sftp',
+                    '--destinationPath' => env('DB_DATABASE'),
+                    '--timestamp' => 'YmdHis',
+                    '--compression' => 'gzip']);
             self::$console->warn('Trying to upload.');
-            $result = self::upload_to_remote();
+//            $result = self::upload_to_remote();
         } else {
             self::$console->warn('Trying to import.');
             $result = $result = self::importSql();
         }
-        if ($result)
-            self::$console->info('Okay! Nice');
-        else
-            self::$console->error('Failed..... ');
+//        if ($result)
+        self::$console->info('Okay! Nice');
+//        else
+//            self::$console->error('Failed..... ');
     }
 }
