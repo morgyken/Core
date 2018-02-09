@@ -107,6 +107,7 @@ class Sync
     public static function importSql()
     {
         $files = glob('/var/www/backups/' . env('DB_DATABASE') . '*.gz');
+        dd($files);
         $files = array_combine($files, array_map("filemtime", $files));
         arsort($files);
         $latest_file = key($files);
