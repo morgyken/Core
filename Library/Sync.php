@@ -106,8 +106,8 @@ class Sync
      */
     public static function importSql()
     {
-//        $files = glob('/var/www/backups/' . env('DB_DATABASE') . '*.gz');
-        $files = glob('/var/www/backups/' . 'platform'. '*.gz');
+        $files = glob('/var/www/backups/' . env('DB_DATABASE') . '*.gz');
+//        $files = glob('/var/www/backups/' . 'platform'. '*.gz');
         $files = array_combine($files, array_map("filemtime", $files));
         arsort($files);
         $latest_file = key($files);
@@ -115,13 +115,14 @@ class Sync
         $command_string = "mysql -u " . env('DB_USERNAME') . " -p" . env('DB_PASSWORD') . " " . env('DB_DATABASE') . ' -f --verbose';
         $piped = $unzip . ' | ' . $command_string;
         $x = \shell_exec($piped);
+        /*
         dd(get_defined_vars());
         $filename = env('DB_DATABASE') . '.sql';
         $path = '/var/www/backups/' . self::$folder . $filename;
         dd($path);
         self::$console->info('File path: ==> ' . $path);
         self::$console->info('Command ==> ' . $command_string);
-        \exec($command_string);
+        \exec($command_string);*/
         return true;
     }
 
